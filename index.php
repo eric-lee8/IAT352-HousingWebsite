@@ -4,43 +4,30 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="CSS/content_page.css">
+        <link rel="stylesheet" href="CSS/index.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-white static-top" style="opacity: 0.9;">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <!--<img src="Images/Logo.png" alt="" style="width: 15rem;">-->
-                </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                <a class="nav-link text-dark" href="Home.html">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                
-                <li class="nav-item">
-                <a class="nav-link text-muted" href="#Contact">Sign Up</a>
-                </li>
-            </ul>
-            </div>
+    <!-- NAVIGATION BAR -->
+    <div class="topnav">
+        <div class="topnav-right">
+        <a href="#home">Home</a>
+        <a href="form.html">Sign Up</a>
         </div>
-        </nav>
+    </div>
 
-        <div class="row">
+
+    <!-- Carousel (Under Construction) -->
+    
+    <!-- <div class="row">
         <div class="col-3"></div>
         <div class="col-6 bg-white">
             <div id="demo" class="carousel slide" data-ride="carousel">
 
                 <!-- Indicators -->
-                <ul class="carousel-indicators">
+                <!--<ul class="carousel-indicators">
                     <li data-target="#demo" data-slide-to="0" class="active"></li>
                     <li data-target="#demo" data-slide-to="1"></li>
                     <li data-target="#demo" data-slide-to="2"></li>
@@ -49,7 +36,7 @@
                 </ul>
                 
                 <!-- The slideshow -->
-                <div class="carousel-inner">
+                <!--<div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="Images/Home-1.png" alt="Img_1" width="100%" height="100%">
                     </div>
@@ -69,7 +56,7 @@
                 </div>
                 
                 <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <!--<a class="carousel-control-prev" href="#demo" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
                 <a class="carousel-control-next" href="#demo" data-slide="next">
@@ -77,7 +64,7 @@
                 </a>
             </div>
         </div>
-
+-->
         <div class="container">
             <div class="row">
                 <div class="col-3"></div>
@@ -106,16 +93,15 @@
                             <div class="sidebar-sticky">
 
                                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                <span>Sort</span>
+                                <span>Sort by</span>
                                 <a class="d-flex align-items-center text-muted" href="#">
                                     <span data-feather="plus-circle"></span>
                                 </a>
                                 </h6>
                                 <ul>
-                                
                                     <div class="dropdown" style ="padding: 1rem">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown button
+                                            Property Type
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -127,7 +113,7 @@
                                 
                                     <div class="dropdown" style ="padding: 1rem"> 
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown button
+                                            Price
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="#">Action</a>
@@ -137,9 +123,9 @@
                                     </div>
                                 
                                 
-                                <div class="dropdown" style ="padding: 1rem">
+                                    <div class="dropdown" style ="padding: 1rem">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown button
+                                            Extra Filters
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item" href="#">Action</a>
