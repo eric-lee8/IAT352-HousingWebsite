@@ -6,13 +6,17 @@
 <body>
 
   <!-- NAVIGATION BAR -->
-  <div class="topnav">
-    <div class="topnav-right">
-      <a href="#home">Home</a>
-      <a href="signin.php">Sign In</a>
-      <a href="signup.php">Sign Up</a>
-    </div>
-  </div>
+  <?php
+        $user = file ('profile.txt');
+        $user = implode(" ", $user);
+        echo "<div class=\"topnav\">
+        <div class=\"topnav-right\">
+        <a href=\"#home\">Home</a>
+        <a href=\"#\">Hello $user</a>
+        </div>
+    </div>";
+
+    ?>
 
 
   <!-- IMAGE MODAL -->

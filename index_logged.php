@@ -10,14 +10,17 @@
     </head>
     <body>
 
-    <!-- NAVIGATION BAR -->
-    <div class="topnav">
-        <div class="topnav-right">
-        <a href="#home">Home</a>
-        <a href="signin.php">Sign In</a>
-        <a href="signup.php">Sign Up</a>
+    <?php
+        $user = file ('profile.txt');
+        $user = implode(" ", $user);
+        echo "<div class=\"topnav\">
+        <div class=\"topnav-right\">
+        <a href=\"#home\">Home</a>
+        <a href=\"#\">Hello $user</a>
         </div>
-    </div>
+    </div>";
+
+    ?>
 
 
     <!-- Carousel (Under Construction) -->
@@ -151,7 +154,7 @@
                             <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
                             <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
                             <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
-                            <a href="content_page.php">View Listing</a>
+                            <a href="content_page_logged.php">View Listing</a>
                         </div>
                     </div>
                     <br>
@@ -164,7 +167,7 @@
                             <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
                             <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
                             <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
-                            <a href="content_page.php">View Listing</a>
+                            <a href="content_page_logged.php">View Listing</a>
                         </div>
                     </div>
                     <br>
@@ -177,7 +180,7 @@
                             <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
                             <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
                             <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
-                            <a href="content_page.php">View Listing</a>
+                            <a href="content_page_logged.php">View Listing</a>
                         </div>
                     </div>
                 </div>
