@@ -166,6 +166,32 @@
                             <a href="#">Add to Favorites</a>
                         </div>
                     </div>
+                    <br>
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">$1,799,000</a>
+                            </h3>
+                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
+                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
+                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
+                            <a href="#">Add to Favorites</a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">$1,799,000</a>
+                            </h3>
+                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
+                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
+                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
+                            <a href="#">Add to Favorites</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-1"></div>
             </div>
