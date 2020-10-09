@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="CSS/content_page.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     </head>
     <body>
 
@@ -33,41 +36,52 @@
 
         <div class="row">
         <div class="col-3"></div>
-        <div class="col-sm-6 bg-white">
-        <div id="demo" class="carousel slide" data-ride="carousel">
+        <div class="col-6 bg-white">
+            <div id="demo" class="carousel slide" data-ride="carousel">
 
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-            <li data-target="#demo" data-slide-to="3"></li>
-            <li data-target="#demo" data-slide-to="4"></li>
-            <li data-target="#demo" data-slide-to="5"></li>
-        </ul>
-        
-        <!-- The slideshow -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="" alt="Img_1">
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo" data-slide-to="1"></li>
+                    <li data-target="#demo" data-slide-to="2"></li>
+                    <li data-target="#demo" data-slide-to="3"></li>
+                    <li data-target="#demo" data-slide-to="4"></li>
+                </ul>
+                
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="Images/Home-1.png" alt="Img_1" width="100%" height="100%">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Images/Home-2.png" alt="Img_2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Images/Home-3.png" alt="Img_3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Images/Home-4.png" alt="Img_4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Images/Home-5.png" alt="Img_5">
+                    </div>
+                    
+                </div>
+                
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#demo" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
             </div>
-            <div class="col-3"></div>
-            </div>
-        
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-        </div>
         </div>
 
         <div class="container">
             <div class="row">
                 <div class="col-3"></div>
-                <div class="col-sm-6 bg-white" padding: 1rem;">
+                <div class="col-sm-6 bg-white" padding: 1rem;>
                 <div style="padding: 2rem; opacity: 1.0;">
                 <form>
                     <div class="form-group">
@@ -90,76 +104,50 @@
                         <div class="row">
                             <nav class="col-md d-none d-md-block bg-light sidebar">
                             <div class="sidebar-sticky">
-                                <ul class="nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#">
-                                    <span data-feather="home"></span>
-                                    Dashboard <span class="sr-only">(current)</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="file"></span>
-                                    Orders
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="shopping-cart"></span>
-                                    Products
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="users"></span>
-                                    Customers
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="bar-chart-2"></span>
-                                    Reports
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="layers"></span>
-                                    Integrations
-                                    </a>
-                                </li>
-                                </ul>
 
                                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                <span>Saved reports</span>
+                                <span>Sort</span>
                                 <a class="d-flex align-items-center text-muted" href="#">
                                     <span data-feather="plus-circle"></span>
                                 </a>
                                 </h6>
-                                <ul class="nav flex-column mb-2">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Current month
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Last quarter
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Social engagement
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                    <span data-feather="file-text"></span>
-                                    Year-end sale
-                                    </a>
-                                </li>
+                                <ul>
+                                
+                                    <div class="dropdown" style ="padding: 1rem">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown button
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                
+                                
+                                    <div class="dropdown" style ="padding: 1rem"> 
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown button
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                
+                                
+                                <div class="dropdown" style ="padding: 1rem">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown button
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                
                                 </ul>
                             </div>
                             </nav>
@@ -168,16 +156,42 @@
                 </div>
                 <div class="col-6">
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
                         <div class="card-body d-flex flex-column align-items-start">
-                            <strong class="d-inline-block mb-2 text-primary">World</strong>
                             <h3 class="mb-0">
-                                <a class="text-dark" href="#">Featured post</a>
+                                <a class="text-dark" href="#">$1,799,000</a>
                             </h3>
-                            <div class="mb-1 text-muted">Nov 12</div>
-                            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#">Continue reading</a>
+                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
+                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
+                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
+                            <a href="#">Add to Favorites</a>
                         </div>
-                        <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Card image cap">
+                    </div>
+                    <br>
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">$1,799,000</a>
+                            </h3>
+                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
+                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
+                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
+                            <a href="#">Add to Favorites</a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <h3 class="mb-0">
+                                <a class="text-dark" href="#">$1,799,000</a>
+                            </h3>
+                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
+                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
+                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
+                            <a href="#">Add to Favorites</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -195,10 +209,6 @@
         </div>
 
     <?php 
-        echo "Hello!";
-        echo "<br/>";
-        echo "<p>Current date and time: " . date("r") . "<p>"; 
-        echo "Konichiwa";
         ?>
     </body>
 </html>
