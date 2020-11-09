@@ -3,7 +3,7 @@
 <title>IAT352</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="CSS/content_page.css">
 
     </head>
@@ -18,31 +18,37 @@
         </div>
     </div>
 
-	<div class="header">
-  		<h2>Sign In</h2>
- 	</div>
 
 
-<form action="signin_post.php" method="POST">
+<div class="form_container"> 
+<form id="signup" action="signin_post.php" method="POST">
 
-<!-- First Name: <input type="text" name="fname" > 
-Last Name: <input type="text" name="lname" > -->
+<h2>Sign In</h2>
 
-<label for="email"><b>E-mail: </b></label>
-    <input type="text" name="email" required> 
+
+    <fieldset>
+    <input type="email" name="email" placeholder="Email" required> 
 
 
 
-<br><br>
-
-<label for="pw"><b>Password</b></label>
-	<input type="password" name="pw" required>
+    </fieldset>
+    <fieldset>
 
 
-<input type="submit" name="submit" value="Submit">
+	<input type="password" name="pw" placeholder="Password" required>
+
+	</fieldset>
+    <fieldset>
+
+
+	<button name="submit" type="submit" id="signup-submit" >Sign In</button>
+    </fieldset>
+
+     <fieldset>
+     	<h3><a href="signup.php">Don't have an Account?</a></h3>
+     </fieldset>
 </form>
 
-<h3><a href="signup.php">Don't have an Account?</a></h3>
 
 </body>
 </html>

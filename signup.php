@@ -23,7 +23,8 @@
 <div class="form_container"> 
 <form id="signup" action="signup_post.php" method="POST">
 <h2>Sign Up</h2>
-<h5>Easily manage your Favourite Listings</h5>
+<h5>*Easily manage your Favourite Listings</h5>
+<h5>*Contact Realtors directly</h5>
 
     <fieldset>
 	
@@ -52,11 +53,14 @@
     </fieldset>
     <fieldset>
 
-	<button name="submit" type="submit" id="signup-submit" >Submit</button>
+	<button name="submit" type="submit" id="signup-submit" >Sign Up</button>
     </fieldset>
+
+  <fieldset>
+    <h3><a href="signin.php">Already have an Account?</a></h3>
+      </fieldset>
 </form>
 
-<h3><a href="signin.php">Already have an Account?</a></h3>
 </div>
 
 </body>
