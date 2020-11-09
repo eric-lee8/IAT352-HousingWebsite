@@ -359,6 +359,100 @@ img.hover-shadow {
 
 /*-------------------------REALTOR INFORMATION-----------------------*/
 
+
+/*----------------------------------FORM STYLING--------------------------------*/
+
+
+.form_container {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+
+#signup {
+  background: #F9F9F9;
+  padding: 25px;
+  margin: 150px 0;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#signup h2 {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#signup h5 {
+  margin: 5px 0 15px;
+  display: block;
+}
+
+fieldset {
+  border: medium none !important;
+  margin: 0 0 10px;
+  min-width: 100%;
+  padding: 10;
+  width: 100%;
+}
+
+#signup input[type="firstName"],
+#signup input[type="lastName"],
+#signup input[type="password"],
+#signup input[type="email"]
+{
+  width: 100%;
+  border: 1px solid #ccc;
+  background: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+}
+
+#signup input[type="firstName"]:hover,
+#signup input[type="lastName"]:hover,
+#signup input[type="password"]:hover,
+#signup input[type="email"]:hover,
+#signup textarea:hover {
+  -webkit-transition: border-color 0.3s ease-in-out;
+  -moz-transition: border-color 0.3s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
+  border: 1px solid #aaa;
+}
+
+
+#signup button[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #4CAF50;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#signup button[type="submit"]:hover {
+  background: #43A047;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#signup button[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+#signup input:focus,
+#signup textarea:focus {
+  outline: 0;
+  border: 1px solid #aaa;
+}
+
+}
+/*----------------------------------FORM STYLING--------------------------------*/
+
+
 /*------------------------------------FOOTER-----------------------*/
 
 .footer {
@@ -386,4 +480,6 @@ img.hover-shadow {
 }
 
 /*----------------------------------UNIVERSAL CSS--------------------------------*/
+
+
 
