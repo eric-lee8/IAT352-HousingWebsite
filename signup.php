@@ -54,9 +54,12 @@
 
 	<button name="submit" type="submit" id="signup-submit" >Submit</button>
     </fieldset>
+
+    <h3><a href="signin.php">Already have an Account?</a></h3>
+
 </form>
 
-<h3><a href="signin.php">Already have an Account?</a></h3>
+<!-- <h3><a href="signin.php">Already have an Account?</a></h3> -->
 </div>
 
 </body>
