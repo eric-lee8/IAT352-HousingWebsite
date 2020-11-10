@@ -146,7 +146,7 @@
                 </div>
                 <div class="col-6">
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0">
                                 <a class="text-dark" href="#">$1,799,000</a>
@@ -159,7 +159,7 @@
                     </div>
                     <br>
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0">
                                 <a class="text-dark" href="#">$1,799,000</a>
@@ -172,7 +172,7 @@
                     </div>
                     <br>
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0">
                                 <a class="text-dark" href="#">$1,799,000</a>

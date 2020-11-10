@@ -3,10 +3,11 @@
         <title>IAT352</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="CSS/index.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </head>
     <body>
 
@@ -19,53 +20,44 @@
         </div>
     </div>
 
+        <div class="container">
+            <div class="col-6"></div>
 
-    <!-- Carousel (Under Construction) -->
-    
-    <!-- <div class="row">
-        <div class="col-3"></div>
-        <div class="col-6 bg-white">
-            <div id="demo" class="carousel slide" data-ride="carousel">
+            <div class="col-12">
 
-                <!-- Indicators -->
-                <!--<ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
-                    <li data-target="#demo" data-slide-to="3"></li>
-                    <li data-target="#demo" data-slide-to="4"></li>
-                </ul>
-                
-                <!-- The slideshow -->
-                <!--<div class="carousel-inner">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="Images/Home-1.png" alt="Img_1" width="100%" height="100%">
+                    <img class="d-block w-100" src="Images/house_1.jpg" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="Images/Home-2.png" alt="Img_2">
+                    <img class="d-block w-100" src="Images/house_1.jpg" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img src="Images/Home-3.png" alt="Img_3">
+                    <img class="d-block w-100" src="Images/house_1.jpg" alt="Third slide">
                     </div>
-                    <div class="carousel-item">
-                        <img src="Images/Home-4.png" alt="Img_4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="Images/Home-5.png" alt="Img_5">
-                    </div>
-                    
                 </div>
-                
-                <!-- Left and right controls -->
-                <!--<a class="carousel-control-prev" href="#demo" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
                 </a>
+                </div>
             </div>
+
+            <div class="col-6"></div>
+
         </div>
--->
+
+
         <div class="container">
             <div class="row">
                 <div class="col-3"></div>
@@ -99,15 +91,18 @@
                                     <span data-feather="plus-circle"></span>
                                 </a>
                                 </h6>
+
+
+
                                 <ul>
                                     <div class="dropdown" style ="padding: 1rem">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Property Type
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" href="#">Houses</a>
+                                            <a class="dropdown-item" href="#">Condos</a>
+                                            <a class="dropdown-item" href="#">Townhouses</a>
                                         </div>
                                     </div>
                                 
@@ -117,9 +112,10 @@
                                             Price
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <a class="dropdown-item" href="#">Under $100k</a>
+                                            <a class="dropdown-item" href="#">$100k-$500k</a>
+                                            <a class="dropdown-item" href="#">$500k-$1mill</a>
+                                            <a class="dropdown-item" href="#">Over $1mill</a>
                                         </div>
                                     </div>
                                 
@@ -143,7 +139,7 @@
                 </div>
                 <div class="col-6">
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0">
                                 <a class="text-dark" href="#">$1,799,000</a>
@@ -156,7 +152,7 @@
                     </div>
                     <br>
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0">
                                 <a class="text-dark" href="#">$1,799,000</a>
@@ -169,7 +165,7 @@
                     </div>
                     <br>
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" data-src="Images/house_1.jpg" alt="Card image cap">
+                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
                         <div class="card-body d-flex flex-column align-items-start">
                             <h3 class="mb-0">
                                 <a class="text-dark" href="#">$1,799,000</a>
