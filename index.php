@@ -57,8 +57,8 @@
 
         </div>
 
-
-        <div class="container">
+<!-- Search bar Under construction -->
+<!--    <div class="container">
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-sm-6 bg-white" padding: 1rem;>
@@ -74,7 +74,8 @@
                 <div class="col-3"></div>
             </div>
             
-        </div>
+        </div> -->
+        
 
         <div class="container">
             <div class="row">
@@ -83,61 +84,177 @@
                     <div class="container-fluid">
                         <div class="row">
                             <nav class="col-md d-none d-md-block bg-light sidebar">
-                            <div class="sidebar-sticky">
+                                <div class="sidebar-sticky">
 
-                                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                <span>Sort by</span>
-                                <a class="d-flex align-items-center text-muted" href="#">
-                                    <span data-feather="plus-circle"></span>
-                                </a>
-                                </h6>
+                                <div class="container-filter">
+                                    <h5>Filter:</h5>
+                                    <form method="post">
 
-
-
-                                <ul>
-                                    <div class="dropdown" style ="padding: 1rem">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Property Type
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Houses</a>
-                                            <a class="dropdown-item" href="#">Condos</a>
-                                            <a class="dropdown-item" href="#">Townhouses</a>
+                                        <h6>Property type:</h6> 
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="type_house" name="type_house" value="1"> Houses</label>
                                         </div>
-                                    </div>
-                                
-                                
-                                    <div class="dropdown" style ="padding: 1rem"> 
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Price
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Under $100k</a>
-                                            <a class="dropdown-item" href="#">$100k-$500k</a>
-                                            <a class="dropdown-item" href="#">$500k-$1mill</a>
-                                            <a class="dropdown-item" href="#">Over $1mill</a>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="type_condo" name="type_condo" value="1"> Condo</label>
+                                            </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="type_townhouse" name="type_townhouse" value="1"> Townhouse</label>
                                         </div>
-                                    </div>
-                                
-                                
-                                    <div class="dropdown" style ="padding: 1rem">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Extra Filters
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                        <h6>Price Range:</h6> 
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="price_100" name="price_100" value="1"> Under $100k</label>
                                         </div>
-                                    </div>
-                                
-                                </ul>
-                            </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="price_500" name="price_500" value="1"> $100k - $500k</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="price_1m" name="price_1m" value="1"> $500k - $1mill</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="price_1over" name="price_1over" value="1"> Over $1mill</label>
+                                        </div>
+
+                                        <h6>City:</h6> 
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="city_vancouver" name="city_vancouver" value="1"> Vancouver</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="city_burnaby" name="city_burnaby" value="1"> Burnaby</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="city_richmond" name="city_richmond" value="1"> Richmond</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="city_surrey" name="city_surrey" value="1"> Surrey</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="city_coquitlam" name="city_coquitlam" value="1"> Coquitlam</label>
+                                        </div>
+
+                                        <br>
+                                        <div class="box">
+                                            <div class="container">
+                                                <input type="submit" value="Search">
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
                             </nav>
                         </div>  
                     </div>
                 </div>
+
+                <?php
+                    // PHP code for when the form is submitted as POST
+                    if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+                        // Validate checkboxes and its fields
+                        $type_house = $_POST['type_house'] ?? '0';
+                        $type_condo = $_POST['type_condo'] ?? '0';
+                        $type_townhouse = $_POST['type_townhouse'] ?? '0';
+
+                        $price_100 = $_POST['price_100'] ?? '0';
+                        $price_500 = $_POST['price_500'] ?? '0';
+                        $price_1m = $_POST['price_1m'] ?? '0';
+                        $price_1over = $_POST['price_1over'] ?? '0';
+
+                        $city_vancouver = $_POST['city_vancouver'] ?? '0';
+                        $city_burnaby = $_POST['city_burnaby'] ?? '0';
+                        $city_richmond = $_POST['city_richmond'] ?? '0';
+                        $city_surrey = $_POST['city_surrey'] ?? '0';
+                        $city_coquitlam = $_POST['city_coquitlam'] ?? '0';
+                    }
+
+
+                    // Building Query request
+                    $send_sql = "SELECT * FROM ";
+
+                    
+                    // Including checkbox field
+                    if($order_number == 1) {
+                        $send_sql .= "";
+                        if($type_condo == 1 || $type_townhouse == 1 || $price_100 == 1 || $price_500 == 1 || $price_1m == 1 || $price_1over == 1 || $city_vancouver == 1 || $city_burnaby == 1 || $city_richmond == 1 || $city_surrey == 1 || $city_coquitlam == 1) {
+                            $send_sql .= ",";
+                        }
+                    }
+                    if($order_date == 1) {
+                        $send_sql .= " orders.orderDate";
+                        if($shipped_date == 1 || $product_name == 1 || $product_description == 1 || $quantity_ordered == 1 || $price_each == 1) {
+                            $send_sql .= ",";
+                        }
+                    }
+                    if($shipped_date == 1) {
+                        $send_sql .= " orders.shippedDate";
+                        if($product_name == 1 || $product_description == 1 || $quantity_ordered == 1 || $price_each == 1) {
+                            $send_sql .= ",";
+                        }
+                    }
+                    if($product_name == 1) {
+                        $send_sql .= " products.productName";
+                        if($product_description == 1 || $quantity_ordered == 1 || $price_each == 1) {
+                            $send_sql .= ",";
+                        }
+                    }
+                    if($product_description == 1) {
+                        $send_sql .= " products.productDescription";
+                        if($quantity_ordered == 1 || $price_each == 1) {
+                            $send_sql .= ",";
+                        }
+                    }
+                    if($quantity_ordered == 1) {
+                        $send_sql .= " orderdetails.quantityOrdered";
+                        if($price_each == 1) {
+                            $send_sql .= ",";
+                        }
+                    }
+                    if($price_each == 1) {
+                        $send_sql .= " orderdetails.priceEach";
+                    }
+                    
+                    $send_sql .= " FROM orders";
+
+                    // Connecting to Primary key of orderDetails table
+                    if($quantity_ordered == 1 || $price_each == 1) {
+                        $send_sql .= " INNER JOIN orderdetails ON orders.orderNumber = orderdetails.orderNumber";
+                    }
+
+                    // Connecting to Primary key of products table
+                    if($product_name == 1 || $product_description == 1)  {
+                        if($quantity_ordered != 1 || $price_each != 1) {
+                            $send_sql .= " INNER JOIN orderdetails ON orders.orderNumber = orderdetails.orderNumber";
+                        }
+                        $send_sql .= " INNER JOIN products ON orderdetails.productCode = products.productCode";
+                    }
+
+                    $resultTable = mysqli_query($db, $send_sql);
+                    
+                ?>
+                
+
                 <div class="col-6">
+
+                <?php   
+                    while($subject = mysqli_fetch_row($resultTable)) {
+                        echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">"
+                        echo "<img class=\"card-img-left flex-auto d-none d-md-block\" src=\"Images/house_1.jpg\" alt=\"Card image cap\" width=\"40%\">"
+                        echo "<h3 class=\"mb-0\">
+                                <a class=\"text-dark\" href=\"#\">$1,799,000</a>
+                            </h3>"
+                        echo "<strong class=\"d-inline-block mb-2 text-primary\">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
+                                <div class=\"mb-1 text-muted\">4 BED | 3 FULL BATH | 1 HALF BATH</div>
+                                <p class=\"card-text mb-auto\">2072 SQFT | HOUSE</p>
+                                <a href=\"content_page.php\">View Listing</a></div></div><br>"
+
+                        foreach($subject as $value) {
+                            echo "<td>" . $value . "</td>";
+                        }
+                    }
+
+                ?>
+
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
                         <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
                         <div class="card-body d-flex flex-column align-items-start">
@@ -150,6 +267,7 @@
                             <a href="content_page.php">View Listing</a>
                         </div>
                     </div>
+
                     <br>
                     <div class="card flex-md-row mb-4 box-shadow h-md-250">
                         <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
