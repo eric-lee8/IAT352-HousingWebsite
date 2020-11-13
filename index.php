@@ -388,11 +388,11 @@
                             <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
                             <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
                             <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
-                            <a href=\"content_page.php\">View Listing</a>
+                            <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
 
                             </div>
                             </div>";
-                            $_SESSION['listing_id'] = $row[0];
+                            
 
                             while($row = mysqli_fetch_row($resultTable)) {
                                 echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
@@ -405,11 +405,11 @@
                                 <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
                                 <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
                                 <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
-                                <a href=\"content_page.php\">View Listing</a>
+                                <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
 
                                 </div>
                                 </div>";
-                                $_SESSION['listing_id'] = $row[0];
+                                
                             }
                         } else {
                            echo "<h3>No Results</h3>";
