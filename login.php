@@ -1,3 +1,5 @@
+<?php include('server.php'); ?>
+
 <html>
 <head>
 	<title>SignUp</title>
@@ -26,10 +28,12 @@
         <h2>Login</h2>
     </div>
 
-    <form method="post" action="login.php">
+    <form method="post" action="index.php">
+        <!-- display validation errors here -->
+        <?php include('errors.php'); ?>
         <div class="input-group">
             <label>Email</label>
-            <input type="text" name="email">
+            <input type="text" name="email" value="<?php echo $email; ?>">
         </div>
         <div class="input-group">
             <label>Password</label>
