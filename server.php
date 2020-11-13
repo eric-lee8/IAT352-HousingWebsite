@@ -75,7 +75,7 @@ if (isset($_POST['register'])) {
 		$_SESSION['email'] = $email;
 		$_SESSION['success'] = "You are now logged in.";
 
-		header ('location: index_v2.php');
+		header ('location: index.php');
 	}
 }
 
@@ -102,7 +102,7 @@ if (isset($_POST['login'])) {
 			$_SESSION['first_name'] = $first_name;
 			$_SESSION['email'] = $email;
 			$_SESSION['success'] = "You are now logged in";
-			header("location: index_v2.php"); //redirect to home page
+			header("location: index.php"); //redirect to home page
 		} else {
 			array_push($errors, "The email/password combination is incorrect");
 		}

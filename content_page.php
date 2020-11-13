@@ -1,43 +1,28 @@
 <html lang="en">
 <head>
 	<title>IAT352</title>
+	<link rel="stylesheet" href="CSS/index.css">
 	<link rel="stylesheet" href="CSS/content_page.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 <body>
 
-	<!-- NAVIGATION BAR -->
+    <!-- NAVIGATION BAR -->
     <div class="topnav">
         <div class="topnav-right">
-        <a href="index.php">Home</a>
-        <a href="signin.php">Sign In</a>
-        <a href="signup.php">Sign Up</a>
+            <a href="index.php#home">Home</a>
+            <a href="signup.php">Sign Up</a>
+            <a href="login.php">Log In</a>
+            <!-- if the user logs in print information about them -->
+            <?php if (isset($_SESSION['email'])) : ?>
+                <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
+                <div style="display: block">
+                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong> <a href="logout.php" style="color:red">Logout</a></p>
+                </div>
+            <?php endif ?>
         </div>
     </div>
-
-
-	<!-- IMAGE MODAL -->
-	<!-- <div class="images_section">
-		<div class="main_image"> -->
-			<!-- https://www.w3schools.com/howto/howto_js_lightbox.asp -->
-			<!-- Trigger the Modal -->
-			<!-- <div class="center">
-				<img id="myImg" src="Images/house_1.jpg" alt="House 1">
-			</div> -->
-			<!-- The Modal -->
-			<!-- <div id="myModal" class="modal"> -->
-
-				<!-- The Close Button -->
-				<!-- <span class="close">&times;</span> -->
-
-				<!-- Modal Content (The Image) -->
-				<!-- <img class="modal-content" id="img01"> -->
-
-				<!-- Modal Caption (Image Text) -->
-				<!-- <div id="caption"></div> -->
-			<!-- </div> -->
-		<!-- </div> -->
-	<!-- </div> images_section -->
-
 
 	<!-- IMAGES SECTION -->
 	<div class="images_section center">

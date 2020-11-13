@@ -5,7 +5,6 @@
 //     header('location: login.php');
 // }
 
-
 ?>
 
 
@@ -65,8 +64,15 @@
     <div class="topnav">
         <div class="topnav-right">
             <a href="#home">Home</a>
-            <a href="signin.php">Sign In</a>
             <a href="signup.php">Sign Up</a>
+            <a href="login.php">Log In</a>
+            <!-- if the user logs in print information about them -->
+            <?php if (isset($_SESSION['email'])) : ?>
+                <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
+                <div style="display: block">
+                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong> <a href="logout.php" style="color:red">Logout</a></p>
+                </div>
+            <?php endif ?>
         </div>
     </div>
 
@@ -389,19 +395,19 @@
 
                             }
                         } else {
-                         echo "<h3>No Results</h3>";
-                     }
+                           echo "<h3>No Results</h3>";
+                       }
 
 
 
-                     ?>
+                       ?>
 
-                 </div>
-                 <div class="col-1"></div>
-             </div>
-         </div>
+                   </div>
+                   <div class="col-1"></div>
+               </div>
+           </div>
 
-         <div>
+           <div>
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-sm-6 bg-white" style="opacity: 0.9; padding: 1rem;">

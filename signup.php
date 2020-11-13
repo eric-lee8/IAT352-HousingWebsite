@@ -21,9 +21,9 @@
     <!-- NAVIGATION BAR -->
     <div class="topnav">
         <div class="topnav-right">
-            <a href="index.php">Home</a>
-            <a href="login.php">Sign In</a>
-            <a href="signup.php">Sign Up</a>
+            <a href="index.php#home">Home</a>
+            <a href="#">Sign Up</a>
+            <a href="login.php">Log In</a>
         </div>
     </div>
 
