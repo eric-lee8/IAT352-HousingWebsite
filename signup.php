@@ -23,7 +23,7 @@
 
 
 <div class="form_container"> 
-<form id="signup" action="signup_post.php" method="POST">
+<form id="signup" action="server.php" method="POST">
 <h2>Sign Up</h2>
 <h5>*Easily manage your Favourite Listings</h5>
 <h5>*Contact Realtors directly</h5>
