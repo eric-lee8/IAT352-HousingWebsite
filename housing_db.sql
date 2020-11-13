@@ -76,10 +76,10 @@ CREATE TABLE IF NOT EXISTS `members` (
   `password` varchar(100) NOT NULL,
   `ph_no` varchar(100) NOT NULL,
   */
-  `fname` varchar(100) NOT NULL,
-  `lname` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
 
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

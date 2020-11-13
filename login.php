@@ -1,8 +1,3 @@
-<!-- REFERENCES -->
-<!-- https://www.youtube.com/watch?v=ShbHwaiyOps -->
-
-<?php include('server.php'); ?>
-
 <html>
 <head>
 	<title>SignUp</title>
@@ -28,18 +23,10 @@
 
 
     <div class="header">
-        <h2>Register</h2>
+        <h2>Login</h2>
     </div>
 
-    <form method="post" action="register.php">
-        <div class="input-group">
-            <label>First Name</label>
-            <input type="text" name="first_name">
-        </div>
-        <div class="input-group">
-            <label>Last Name</label>
-            <input type="text" name="last_name">
-        </div>
+    <form method="post" action="login.php">
         <div class="input-group">
             <label>Email</label>
             <input type="text" name="email">
@@ -49,14 +36,10 @@
             <input type="text" name="password">
         </div>
         <div class="input-group">
-            <label>Confirm Password</label>
-            <input type="text" name="password_confirm">
-        </div>
-        <div class="input-group">
-            <button type="submit" name="register" class="btn">Register</button>
+            <button type="submit" name="login" class="btn">Login</button>
         </div>
         <p>
-            Already a member? <a href="login.php">Sign in</a>
+            Not yet a member? <a href="signup.php">Sign up</a>
         </p>
 
 </body>
