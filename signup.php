@@ -31,18 +31,20 @@
         <h2>Register</h2>
     </div>
 
-    <form method="post" action="register.php">
+    <form method="post" action="signup.php">
+        <!-- display validation errors here -->
+        <?php include('errors.php'); ?>
         <div class="input-group">
             <label>First Name</label>
-            <input type="text" name="first_name">
+            <input type="text" name="first_name" value="<?php echo $first_name; ?>">
         </div>
         <div class="input-group">
             <label>Last Name</label>
-            <input type="text" name="last_name">
+            <input type="text" name="last_name" value="<?php echo $last_name; ?>">
         </div>
         <div class="input-group">
             <label>Email</label>
-            <input type="text" name="email">
+            <input type="text" name="email" value="<?php echo $email; ?>">
         </div>
         <div class="input-group">
             <label>Password</label>

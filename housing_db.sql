@@ -83,9 +83,3 @@ CREATE TABLE IF NOT EXISTS `members` (
 
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-
-
-

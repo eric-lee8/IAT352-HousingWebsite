@@ -18,7 +18,7 @@ $db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 // Test if connection succeeded
 if(mysqli_connect_errno()) {
-	    // if connection failed, skip the rest of PHP code, and print an error
+	// if connection failed, skip the rest of PHP code, and print an error
 	die("Database connection failed: " . 
 		mysqli_connect_error() . 
 		" (" . mysqli_connect_errno() . ")"
@@ -28,11 +28,11 @@ if(mysqli_connect_errno()) {
 // if the register button is clicked
 if (isset($_POST['register'])) {
 
-	$first_name = mysql_real_escape_string($_POST['first_name']);
-	$last_name = mysql_real_escape_string($_POST['last_name']);
-	$email = mysql_real_escape_string($_POST['email']);
-	$password = mysql_real_escape_string($_POST['password']);
-	$password_confirm = mysql_real_escape_string($_POST['password_confirm']);
+	$first_name = mysqli_real_escape_string($db, $_POST['first_name']);
+	$last_name = mysqli_real_escape_string($db, $_POST['last_name']);
+	$email = mysqli_real_escape_string($db, $_POST['email']);
+	$password = mysqli_real_escape_string($db, $_POST['password']);
+	$password_confirm = mysqli_real_escape_string($db, $_POST['password_confirm']);
 	
 	//ensure that form fields are filled properly
 	if (empty($first_name)) {
@@ -55,20 +55,10 @@ if (isset($_POST['register'])) {
 	// if there are no errors, save user to database
 	if (count($errors) == 0) {
 		$password = md5($password); // encrypt password before storing in database (security)
-		$sql = "INSERT INTO `members` (`fname`, `lname`, `password`, `email`)
+		$sql = "INSERT INTO members (fname, lname, password, email)
 				VALUES ('$first_name', '$last_name', '$password', '$email')";
 		mysqli_query($db, $sql);
-
 	}
-
 }
 
-
-
 ?>
-
-
-
-
-</body>
-</html>
