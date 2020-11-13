@@ -63,6 +63,8 @@
             Already a member? <a href="login.php">Log In</a>
         </p>
 
+</form>
+
 </body>
 
 </html>
