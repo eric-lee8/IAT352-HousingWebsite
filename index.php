@@ -47,7 +47,7 @@
 
             <?php if (isset($_SESSION["first_name"])) : ?>
                 <p>Welcome <strong><?php echo $_SESSION['first_name']; ?></strong></p>
-                <p><a href="index.php>logout='1'" style="color:red">Logout</a></p>
+                <p><a href="signup.php" style="color:red">Logout</a></p>
             <?php endif ?>
      </div>
 

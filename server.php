@@ -51,7 +51,19 @@ if (isset($_POST['register'])) {
 	}
 
 	if ($password != $password_confirm) {
-		array_push($errors, "The two passwords do not match");
+		array_push($errors, "The passwords do not match");
+	}
+
+
+	//check db for eisting user with same email
+	$email_check_query = "SELECT * FROM members WHERE email = '$email' LIMIT 1";
+	$result = mysqli_query($db, $email_check_query);
+	$email_in_use = mysqli_fetch_assoc($result);
+
+	if($email_in_use) {
+		if($email_in_use['email'] === $email) {
+			array_push($errors, "Email is already in use");
+		}
 	}
 
 	// if there are no errors, save user to database
@@ -60,6 +72,10 @@ if (isset($_POST['register'])) {
 		$sql = "INSERT INTO `members` (`fname`, `lname`, `password`, `email`)
 				VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
 		mysqli_query($db, $sql);
+		$_SESSION['email'] = $email;
+		$_SESSION['success'] = "You are now logged in.";
+
+		header ('location: index_v2.php');
 	}
 }
 
@@ -84,20 +100,14 @@ if (isset($_POST['login'])) {
 		if(mysqli_num_rows($result) == 1) {
 			//log user in
 			$_SESSION['first_name'] = $first_name;
+			$_SESSION['email'] = $email;
 			$_SESSION['success'] = "You are now logged in";
-			header('location: index.php'); //redirect to home page
+			header("location: index_v2.php"); //redirect to home page
 		} else {
 			array_push($errors, "The email/password combination is incorrect");
 		}
 	}
 
-}
-
-//logout
-if (isset($_GET['logout'])) {
-	session_destroy();
-	unset($_SESSION['username']);
-	header('location: login.php');
 }
 
 ?>

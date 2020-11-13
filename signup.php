@@ -1,5 +1,6 @@
 <!-- REFERENCES -->
 <!-- https://www.youtube.com/watch?v=ShbHwaiyOps -->
+<!-- https://www.youtube.com/watch?v=qjwc8ScTHnY -->
 
 <?php include('server.php'); ?>
 
@@ -21,7 +22,7 @@
     <div class="topnav">
         <div class="topnav-right">
             <a href="index.php">Home</a>
-            <a href="signin.php">Sign In</a>
+            <a href="login.php">Sign In</a>
             <a href="signup.php">Sign Up</a>
         </div>
     </div>
@@ -34,31 +35,32 @@
     <form method="post" action="signup.php">
         <!-- display validation errors here -->
         <?php include('errors.php'); ?>
+        
         <div class="input-group">
-            <label>First Name</label>
+            <label for="first_name">First Name</label>
             <input type="text" name="first_name" value="<?php echo $first_name; ?>">
         </div>
         <div class="input-group">
-            <label>Last Name</label>
+            <label for="last_name">Last Name</label>
             <input type="text" name="last_name" value="<?php echo $last_name; ?>">
         </div>
         <div class="input-group">
-            <label>Email</label>
-            <input type="text" name="email" value="<?php echo $email; ?>">
+            <label for="email">Email</label>
+            <input type="email" name="email" value="<?php echo $email; ?>">
         </div>
         <div class="input-group">
-            <label>Password</label>
-            <input type="text" name="password">
+            <label for="password">Password</label>
+            <input type="password" name="password">
         </div>
         <div class="input-group">
-            <label>Confirm Password</label>
-            <input type="text" name="password_confirm">
+            <label for="password">Confirm Password</label>
+            <input type="password" name="password_confirm">
         </div>
         <div class="input-group">
             <button type="submit" name="register" class="btn">Register</button>
         </div>
         <p>
-            Already a member? <a href="login.php">Sign in</a>
+            Already a member? <a href="login.php">Log In</a>
         </p>
 
 </body>

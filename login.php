@@ -25,22 +25,23 @@
 
 
     <div class="header">
-        <h2>Login</h2>
+        <h2>Log In</h2>
     </div>
 
-    <form method="post" action="index.php">
+    <form method="post" action="login.php">
         <!-- display validation errors here -->
         <?php include('errors.php'); ?>
+
         <div class="input-group">
             <label>Email</label>
-            <input type="text" name="email" value="<?php echo $email; ?>">
+            <input type="email" name="email" value="<?php echo $email; ?>">
         </div>
         <div class="input-group">
             <label>Password</label>
-            <input type="text" name="password">
+            <input type="password" name="password">
         </div>
         <div class="input-group">
-            <button type="submit" name="login" class="btn">Login</button>
+            <button type="submit" name="login" class="btn">Log In</button>
         </div>
         <p>
             Not yet a member? <a href="signup.php">Sign up</a>
