@@ -63,15 +63,27 @@
     <!-- NAVIGATION BAR -->
     <div class="topnav">
         <div class="topnav-right">
-            <a href="#home">Home</a>
-            <a href="signup.php">Sign Up</a>
-            <a href="login.php">Log In</a>
+            <a href="index.php#home">Home</a>
+           <!--  <a href="signup.php">Sign Up</a>
+            <a href="login.php">Log In</a> -->
+            
+            <?php if (!isset($_SESSION['email'])) : ?>
+                <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
+                <div style="display: flex">
+                     <a href="signup.php">Sign Up</a>
+                     <a href="login.php">Log In</a>
+                </div>
+
+            <?php endif ?>
+
             <!-- if the user logs in print information about them -->
             <?php if (isset($_SESSION['email'])) : ?>
                 <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
-                <div style="display: block">
-                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong> <a href="logout.php" style="color:red">Logout</a></p>
+                <div style="display: flex">
+                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+                    <a href="logout.php" style="color:red">Logout</a>
                 </div>
+
             <?php endif ?>
         </div>
     </div>
