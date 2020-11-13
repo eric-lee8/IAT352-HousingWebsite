@@ -8,7 +8,6 @@
 
 ?>
 
-    
 
 <html>
 <head>
@@ -26,41 +25,41 @@
 
     <?php
             // Credentials
-            define("DB_SERVER", "localhost");
-            define("DB_USER", "root");
-            define("DB_PASS", "");
-            define("DB_NAME", "JUSTIN_LAU");
+    define("DB_SERVER", "localhost");
+    define("DB_USER", "root");
+    define("DB_PASS", "");
+    define("DB_NAME", "justin_lau");
 
             // Creating database connection
-            function db_connect() {
-                $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-                return $connection;
+    function db_connect() {
+        $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+        return $connection;
 
                 // Test is connection succeeded
-                if(mysqli_connect_erro()) {
+        if(mysqli_connect_erro()) {
                     // if connection failed, skip the reest of PHP code and print error
-                    die("Database connection failed: ". mysqli_connect_error() . " (" . mysqli_connect_errorno() . ")" );
-                }
-            }
+            die("Database connection failed: ". mysqli_connect_error() . " (" . mysqli_connect_errorno() . ")" );
+        }
+    }
 
             // Disconnecting Database connection
-            function db_disconnect($connection) {
-                if(!isset($connection)) {
-                    mysqli_close($connection);
-                }
-            }
+    function db_disconnect($connection) {
+        if(!isset($connection)) {
+            mysqli_close($connection);
+        }
+    }
 
             // Query Functions:
 
             // Get all 
-            function find_all_db() {
-                global $db;
-                
-                $sql = "SELECT * FROM orders";
-                $result = mysqli_query($db, $sql);
-                return $result;
-            }
-        ?>
+    function find_all_db() {
+        global $db;
+
+        $sql = "SELECT * FROM property";
+        $result = mysqli_query($db, $sql);
+        return $result;
+    }
+    ?>
 
     <!-- NAVIGATION BAR -->
     <div class="topnav">
@@ -71,85 +70,47 @@
         </div>
     </div>
 
-    <div class="content">
-        <?php if (isset($_SESSION['success'])): ?>
-            <div class="error success">
-                <h3>
-                    <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                    ?>
-                </h3>
-            </div>
-            <?php endif ?>
+    <div class="container">
+        <div class="col-6"></div>
 
-            <?php if (isset($_SESSION["first_name"])) : ?>
-                <p>Welcome <strong><?php echo $_SESSION['first_name']; ?></strong></p>
-                <p><a href="signup.php" style="color:red">Logout</a></p>
-            <?php endif ?>
-     </div>
+        <div class="col-12">
 
-        <div class="container">
-            <div class="col-6"></div>
-
-            <div class="col-12">
-
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100" src="Images/house_1.jpg" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="Images/house_1.jpg" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block w-100" src="Images/house_1.jpg" alt="Third slide">
-                        </div>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="Images/house_1.jpg" alt="First slide">
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="Images/house_1.jpg" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="Images/house_1.jpg" alt="Third slide">
+                    </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-
-            <div class="col-6"></div>
-
         </div>
 
+        <div class="col-6"></div>
 
-        <br>
-        <br>
+    </div>
 
-        <div class="container">
-            <?php if (isset($_SESSION['success'])): ?>
-                <div class="error success">
-                    <h3>
-                        <?php
-                        echo $_SESSION['success'];
-                        unset($_SESSION['success']);
-                        ?>
-                    </h3>
-                </div>
-            <?php endif ?>
+    <br>
+    <br>
 
-            <?php if (isset($_SESSION["email"])): ?>
-                <p> Welcome <?php echo $_SESSION['email']; ?> </p>
-                <a href="index.php?logout='1'" > Log Out </a>
-            <?php endif ?>
-        </div>
-
-
-<!-- Search bar Under construction -->
+    <!-- Search bar Under construction -->
 <!--    <div class="container">
             <div class="row">
                 <div class="col-3"></div>
@@ -179,32 +140,33 @@
                                 <div class="sidebar-sticky">
 
 
-                                <div class="container-filter">
-                                <br>
-                                    <h5>Filter:</h5>
-                                    <form method="post">
+                                    <div class="container-filter">
+                                        <br>
+                                        <h5>Filter:</h5>
+                                        <form method="post" action="index.php">
 
-                                        <h6>Property type:</h6> 
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="type_house" name="type_house" value="1"> Houses</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="type_condo" name="type_condo" value="1"> Condo</label>
+                                            <h6>Property type:</h6> 
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" id="type_house" name="type_house" value="1"> House</label>
+                                                <!-- <label><input type="checkbox" id="type_house" name="type_house" value="<?php echo $type_house; ?>"> House</label> -->
                                             </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="type_townhouse" name="type_townhouse" value="1"> Townhouse</label>
-                                        </div>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" id="type_condo" name="type_condo" value="1"> Condo</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" id="type_townhouse" name="type_townhouse" value="1"> Townhouse</label>
+                                            </div>
 
-                                        <h6>Price Range:</h6> 
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="price_500" name="price_500" value="1"> Under $500k</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="price_1m" name="price_1m" value="1"> $500k - $1mill</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="price_1over" name="price_1over" value="1"> Over $1mill</label>
-                                        </div>
+                                            <h6>Price Range:</h6> 
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" id="price_500" name="price_500" value="1"> Under $500k</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" id="price_1m" name="price_1m" value="1"> $500k - $1mill</label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" id="price_1over" name="price_1over" value="1"> Over $1mill</label>
+                                            </div>
 <!--
                                         <h6>City:</h6> 
                                         <div class="checkbox">
@@ -222,28 +184,28 @@
                                         <div class="checkbox">
                                             <label><input type="checkbox" id="city_coquitlam" name="city_coquitlam" value="1"> Coquitlam</label>
                                         </div>
--->
-                                        <br>
-                                        <div class="box">
-                                            <div class="container">
-                                                <input type="submit" value="Search">
-                                            </div>
+                                    -->
+                                    <br>
+                                    <div class="box">
+                                        <div class="container">
+                                            <input type="submit" value="Search">
                                         </div>
+                                    </div>
 
-                                    </form>
-                                </div>
+                                </form>
+                            </div>
 
 
-                                    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                    <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                         <span>Sort by</span>
                                         <a class="d-flex align-items-center text-muted" href="#">
                                             <span data-feather="plus-circle"></span>
                                         </a>
-                                    </h6>
+                                    </h6> -->
 
 
 
-                                    <ul>
+                                    <!-- <ul>
                                         <div class="dropdown" style ="padding: 1rem">
                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Property Type
@@ -280,7 +242,7 @@
                                             </div>
                                         </div>
 
-                                    </ul>
+                                    </ul> -->
                                 </div>
 
                             </nav>
@@ -293,16 +255,16 @@
                 $db = db_connect();
 
                     // PHP code for when the form is submitted as POST
-                    if($_SERVER["REQUEST_METHOD"] == "POST") {
+                if($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         // Validate checkboxes and its fields
-                        $type_house = $_POST['type_house'] ?? '0';
-                        $type_condo = $_POST['type_condo'] ?? '0';
-                        $type_townhouse = $_POST['type_townhouse'] ?? '0';
+                    $type_house = $_POST['type_house'] ?? '0';
+                    $type_condo = $_POST['type_condo'] ?? '0';
+                    $type_townhouse = $_POST['type_townhouse'] ?? '0';
 
-                        $price_500 = $_POST['price_500'] ?? '0';
-                        $price_1m = $_POST['price_1m'] ?? '0';
-                        $price_1over = $_POST['price_1over'] ?? '0';
+                    $price_500 = $_POST['price_500'] ?? '0';
+                    $price_1m = $_POST['price_1m'] ?? '0';
+                    $price_1over = $_POST['price_1over'] ?? '0';
 
                         /*
                         $city_vancouver = $_POST['city_vancouver'] ?? '0';
@@ -312,6 +274,14 @@
                         $city_coquitlam = $_POST['city_coquitlam'] ?? '0'; 
                         */
                     }
+
+                    $type_house = $_POST['type_house'] ?? '0';
+                    $type_condo = $_POST['type_condo'] ?? '0';
+                    $type_townhouse = $_POST['type_townhouse'] ?? '0';
+
+                    $price_500 = $_POST['price_500'] ?? '0';
+                    $price_1m = $_POST['price_1m'] ?? '0';
+                    $price_1over = $_POST['price_1over'] ?? '0';
 
 
                     // Building Query request
@@ -349,19 +319,19 @@
                             } else {
                                 $send_sql .= " WHERE (PRICE";
                             }
-    
+
                             if($price_500 == 1 && $price_1m == 0 && $price_1over == 0) {
                                 $send_sql .= " < 500000)";
                             }
-    
+
                             if($price_500 == 0 && $price_1m == 1 && $price_1over == 0) {
                                 $send_sql .= " >= 500000 && PRICE <= 1000000)";
                             }
-    
+
                             if($price_500 == 0 && $price_1m == 0 && $price_1over == 1) {
                                 $send_sql .= " > 1000000)";
                             }
-    
+
                             if($price_500 == 1 && $price_1m == 1 && $price_1over == 0) {
                                 $send_sql .= " < 1000000)";
                             }
@@ -382,56 +352,56 @@
 
                     //echo $send_sql;
                     
-                ?>
-                
+                    ?>
 
-                <div class="col-6">
 
-                <?php
+                    <div class="col-6">
 
-                if($row = mysqli_fetch_row($resultTable)){
-                    echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
-                        <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
-                        <div class=\"card-body d-flex flex-column align-items-start\">
-                            <h3 class=\"mb-0\">
-                                <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
-                            </h3>
-                            <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
-                            <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
-                            <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
-                            <a href=\"content_page.php\">View Listing</a>
-                        </div>
-                    </div>";
+                        <?php
 
-                        while($row = mysqli_fetch_row($resultTable)) {
+                        if($row = mysqli_fetch_row($resultTable)){
                             echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
-                        <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
-                        <div class=\"card-body d-flex flex-column align-items-start\">
+                            <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
+                            <div class=\"card-body d-flex flex-column align-items-start\">
                             <h3 class=\"mb-0\">
-                                <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
+                            <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
                             </h3>
                             <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
                             <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
                             <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
                             <a href=\"content_page.php\">View Listing</a>
-                        </div>
-                    </div>";
+                            </div>
+                            </div>";
 
-                        }
-                   } else {
-                       echo "<h3>No Results</h3>";
-                   }
+                            while($row = mysqli_fetch_row($resultTable)) {
+                                echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
+                                <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
+                                <div class=\"card-body d-flex flex-column align-items-start\">
+                                <h3 class=\"mb-0\">
+                                <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
+                                </h3>
+                                <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
+                                <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
+                                <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
+                                <a href=\"content_page.php\">View Listing</a>
+                                </div>
+                                </div>";
 
-                   
+                            }
+                        } else {
+                         echo "<h3>No Results</h3>";
+                     }
 
-                ?>
 
-                </div>
-                <div class="col-1"></div>
-            </div>
-        </div>
 
-        <div>
+                     ?>
+
+                 </div>
+                 <div class="col-1"></div>
+             </div>
+         </div>
+
+         <div>
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-sm-6 bg-white" style="opacity: 0.9; padding: 1rem;">
