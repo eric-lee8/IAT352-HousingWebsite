@@ -375,7 +375,7 @@
                             <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
                             <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
                             <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
-                            <a href=\"content_page.php\">View Listing</a>
+                            <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
                             </div>
                             </div>";
 
@@ -389,7 +389,7 @@
                                 <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
                                 <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
                                 <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
-                                <a href=\"content_page.php\">View Listing</a>
+                                <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
                                 </div>
                                 </div>";
 
