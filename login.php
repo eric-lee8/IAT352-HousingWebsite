@@ -1,7 +1,3 @@
-<!-- REFERENCES -->
-<!-- https://www.youtube.com/watch?v=ShbHwaiyOps -->
-<!-- https://www.youtube.com/watch?v=qjwc8ScTHnY -->
-
 <?php include('server.php'); ?>
 
 <html>
@@ -22,48 +18,34 @@
     <div class="topnav">
         <div class="topnav-right">
             <a href="index.php">Home</a>
-            <a href="login.php">Sign In</a>
+            <a href="signin.php">Sign In</a>
             <a href="signup.php">Sign Up</a>
         </div>
     </div>
 
 
     <div class="header">
-        <h2>Register</h2>
+        <h2>Log In</h2>
     </div>
 
-    <form method="post" action="signup.php">
+    <form method="post" action="login.php">
         <!-- display validation errors here -->
         <?php include('errors.php'); ?>
-        
+
         <div class="input-group">
-            <label for="first_name">First Name</label>
-            <input type="text" name="first_name" value="<?php echo $first_name; ?>">
-        </div>
-        <div class="input-group">
-            <label for="last_name">Last Name</label>
-            <input type="text" name="last_name" value="<?php echo $last_name; ?>">
-        </div>
-        <div class="input-group">
-            <label for="email">Email</label>
+            <label>Email</label>
             <input type="email" name="email" value="<?php echo $email; ?>">
         </div>
         <div class="input-group">
-            <label for="password">Password</label>
+            <label>Password</label>
             <input type="password" name="password">
         </div>
         <div class="input-group">
-            <label for="password">Confirm Password</label>
-            <input type="password" name="password_confirm">
-        </div>
-        <div class="input-group">
-            <button type="submit" name="register" class="btn">Register</button>
+            <button type="submit" name="login" class="btn">Log In</button>
         </div>
         <p>
-            Already a member? <a href="login.php">Log In</a>
+            Not yet a member? <a href="signup.php">Sign up</a>
         </p>
-
-</form>
 
 </body>
 
