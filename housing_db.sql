@@ -1,5 +1,4 @@
--- CREATE DATABASE JUSTIN_LAU;
-
+CREATE DATABASE JUSTIN_LAU;
 USE JUSTIN_LAU;
 
 /*Table structure for table `agents` */
@@ -62,7 +61,7 @@ INSERT INTO `property` (`listing_id`, `beds`, `baths`, `sqft`, `date_listed`, `c
 ('R2515498', 4, 4, 1718, 'Nov 05 2020', 'Surrey', '24 - 6383 140 ST', 599000,  'Townhouse', 6859),
 ('R2515690', 9, 8, 6135, 'Nov 07 2020', 'Surrey', '15094 84 AVE', 1788800, 'House', 3041),
 ('R2515103', 6, 10, 8503, 'Nov 06 2020', 'Surrey', '16230 90 AVE', 2688000, 'House', 8749),
-('R2511070', 2, 1, 744, 'Oct 21 2020', 'Surrey', '31 - 8266 KING GEORGE BLVD', 68800,  'Manufactured House', 5216),
+('R2511070', 2, 1, 744, 'Oct 21 2020', 'Surrey', '31 - 8266 KING GEORGE BLVD', 68800,  'House', 5216),
 ('R2514986', 2, 2, 1152, 'Nov 03 2020', 'Surrey', '307 - 10581 140 ST', 620000, 'Condo', 4725);
 
 UNLOCK TABLES;
@@ -70,15 +69,16 @@ UNLOCK TABLES;
 /*Table structure for table `members` */
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
+  /*
   `email` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `ph_no` varchar(100) NOT NULL,
+  */
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-
-
-

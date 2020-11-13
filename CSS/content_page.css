@@ -398,8 +398,8 @@ fieldset {
   width: 100%;
 }
 
-#signup input[type="firstName"],
-#signup input[type="lastName"],
+#signup input[type="fname"],
+#signup input[type="lname"],
 #signup input[type="password"],
 #signup input[type="email"]
 {
@@ -410,8 +410,8 @@ fieldset {
   padding: 10px;
 }
 
-#signup input[type="firstName"]:hover,
-#signup input[type="lastName"]:hover,
+#signup input[type="fname"]:hover,
+#signup input[type="lname"]:hover,
 #signup input[type="password"]:hover,
 #signup input[type="email"]:hover,
 #signup textarea:hover {
@@ -451,7 +451,12 @@ fieldset {
   border: 1px solid #aaa;
 }
 
+.error {
+  border: 1px solid red;
+  background: #f2dede;
+  border-radius: 5px;
 }
+
 /*----------------------------------FORM STYLING--------------------------------*/
 
 
