@@ -1,5 +1,4 @@
 CREATE DATABASE JUSTIN_LAU;
-
 USE JUSTIN_LAU;
 
 /*Table structure for table `agents` */
