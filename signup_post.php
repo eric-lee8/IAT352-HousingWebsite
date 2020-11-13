@@ -9,7 +9,22 @@
 
 	session_start();
 
-	$db = mysql_connect('localhost', 'root', '', 'housing_db');
+	$dbhost = "localhost";
+	$dbuser = "root";
+	$dbpass = "";
+	$dbname = "justin_lau";
+	$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+	//$db = db_connect();
+
+	  // Test if connection succeeded
+	if(mysqli_connect_errno()) {
+	    // if connection failed, skip the rest of PHP code, and print an error
+	    die("Database connection failed: " . 
+	        mysqli_connect_error() . 
+	        " (" . mysqli_connect_errno() . ")"
+    );
+}
 
 	// set initial values
 	$fname = "";				
@@ -22,11 +37,11 @@
 	// detect form submission for sign up
 	if (isset($_POST["submit"])) {
 
-		$fname = mysql_real_escape_string($_POST['fname']);
-		$lname = mysql_real_escape_string($_POST['lname']);
-		$pw = mysql_real_escape_string($_POST['pw']);
-		$pwconfirm = mysql_real_escape_string($_POST['pwconfirm']);
-		$email = mysql_real_escape_string($_POST['email']);
+		$fname = $_POST['fname'];
+		$lname = $_POST['lname'];
+		$pw = $_POST['pw'];
+		$pwconfirm = $_POST['pwconfirm'];
+		$email = $_POST['email'];
 		echo "The form was submitted successfully.<br />";
 
 		if(empty($fname)) {
@@ -49,7 +64,7 @@
 		if (count($errors) == 0) {
 			$password = md5($pw); // encrypts pw before storing into database
 			$sql = "INSERT INTO members (fname, lname, password, email) VALUES ('$fname', '$lname', '$password', '$email')";
-			mysql_query($db, $sql);
+			mysql_query($connection, $sql);
 			$_SESSION['fname'] = $fname;
 			$_SESSION['success'] = "You are now logged in";
 			header('location: index.php'); //redirects to home page after success

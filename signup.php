@@ -28,16 +28,16 @@
 <h5>*Easily manage your Favourite Listings</h5>
 <h5>*Contact Realtors directly</h5>
 
-<?php include('errors.php'); ?>
+ <?php //include('errors.php'); ?> 
 
     <fieldset>
 	
-	<input type="fname"  name="fname" required placeholder="First Name">
+	<input type="fname"  name="fname" required placeholder="First Name" >
 
     </fieldset>
     <fieldset>
 
-	<input type="lname"  name="lname" required placeholder="Last Name"> 
+	<input type="lname"  name="lname" required placeholder="Last Name" > 
 
     </fieldset>
     <fieldset>
@@ -52,7 +52,7 @@
     </fieldset>
     <fieldset>
 
-    <input type="email" name="email" required placeholder="Email"> 
+    <input type="email" name="email" required placeholder="Email" > 
 
     </fieldset>
     <fieldset>
