@@ -54,7 +54,7 @@ if(mysqli_connect_errno()) {
 			<?php
 
 			//$LISTING_ID WILL NEED TO TAKE IN THE INPUT FROM THE HOME SCREEN
-			$listing_id = "R2515047"; //hard coded
+			$listing_id = $_SESSION['listing_id']; //hard coded
 			// $listing_id = "R2515566";
 
 			//this works
