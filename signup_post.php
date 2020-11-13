@@ -9,7 +9,7 @@
 
 	session_start();
 
-	$db = mysql_connect('localhost', 'root', '', 'housing_db')
+	$db = mysql_connect('localhost', 'root', '', 'housing_db');
 
 	// set initial values
 	$fname = "";				
@@ -42,7 +42,7 @@
 		if(empty($email)) {
 			array_push($errors, "Email is required");
 		}
-		if($pw != $pwconfirm {
+		if($pw != $pwconfirm) {
 			array_push($errors, "The two passwords do not match");
 		}
 
@@ -76,7 +76,7 @@
 			$query = "SELECT * FROM members WHERE email='$email' AND password='$password'";
 			$result = mysqli_query($db, $query);
 
-			if (mysqli_num)rows($result) == 1) {
+			if (mysqli_num_rows($result) == 1) {
 				//log user in
 				$_SESSION['email'] = $email;
 				$_SESSION['success'] = "You are now logged in";
