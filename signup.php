@@ -28,7 +28,7 @@
 <h5>*Easily manage your Favourite Listings</h5>
 <h5>*Contact Realtors directly</h5>
 
- <?php //include('errors.php'); ?> 
+ <?//php include('errors.php'); ?> 
 
     <fieldset>
 	

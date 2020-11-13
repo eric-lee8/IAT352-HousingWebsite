@@ -42,8 +42,8 @@
 		$pw = $_POST['pw'];
 		$pwconfirm = $_POST['pwconfirm'];
 		$email = $_POST['email'];
-		echo "The form was submitted successfully.<br />";
-
+		
+/*
 		if(empty($fname)) {
 			array_push($errors, "First name is required");
 		}
@@ -57,8 +57,13 @@
 		if(empty($email)) {
 			array_push($errors, "Email is required");
 		}
+
+		*/
+
+		
 		if($pw != $pwconfirm) {
 			array_push($errors, "The two passwords do not match");
+			echo "The two passwords do not match<br />";
 		}
 
 		if (count($errors) == 0) {
@@ -77,8 +82,8 @@
 
 // logging in from sign in page
 	if(isset($_POST['login'])) {
-		$email = mysql_real_escape_string($_POST['email']);
-		$password = mysql_real_escape_string($_POST['password']);
+		$email = $_POST['email'];
+		$password = $_POST['password'];
 
 		if(empty($email)) {
 			array_push($errors, "Email is required");
@@ -103,7 +108,7 @@
 
 
 
-			mysql_query($db, $sql);
+			mysql_query($connection, $sql);
 	}
 
 
