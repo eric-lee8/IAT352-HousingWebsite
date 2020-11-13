@@ -63,15 +63,27 @@
     <!-- NAVIGATION BAR -->
     <div class="topnav">
         <div class="topnav-right">
-            <a href="#home">Home</a>
-            <a href="signup.php">Sign Up</a>
-            <a href="login.php">Log In</a>
+            <a href="index.php#home">Home</a>
+           <!--  <a href="signup.php">Sign Up</a>
+            <a href="login.php">Log In</a> -->
+            
+            <?php if (!isset($_SESSION['email'])) : ?>
+                <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
+                <div style="display: flex">
+                     <a href="signup.php">Sign Up</a>
+                     <a href="login.php">Log In</a>
+                </div>
+
+            <?php endif ?>
+
             <!-- if the user logs in print information about them -->
             <?php if (isset($_SESSION['email'])) : ?>
                 <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
-                <div style="display: block">
-                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong> <a href="logout.php" style="color:red">Logout</a></p>
+                <div style="display: flex">
+                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+                    <a href="logout.php" style="color:red">Logout</a>
                 </div>
+
             <?php endif ?>
         </div>
     </div>
@@ -370,29 +382,34 @@
                             <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
                             <div class=\"card-body d-flex flex-column align-items-start\">
                             <h3 class=\"mb-0\">
-                            <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
+                            <a class=\"text-dark\" href=\"content_page.php\">$" . $row[7] . "</a>
                             </h3>
-                            <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
-                            <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
-                            <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
-                            <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
+
+                            <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
+                            <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
+                            <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
+                            <a href=\"content_page.php\">View Listing</a>
+
                             </div>
                             </div>";
+                            $_SESSION['listing_id'] = $row[0];
 
                             while($row = mysqli_fetch_row($resultTable)) {
                                 echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
                                 <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
                                 <div class=\"card-body d-flex flex-column align-items-start\">
                                 <h3 class=\"mb-0\">
-                                <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
+                                <a class=\"text-dark\" href=\"content_page\">$" . $row[7] . "</a>
                                 </h3>
-                                <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
-                                <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
-                                <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
-                                <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
+
+                                <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
+                                <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
+                                <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
+                                <a href=\"content_page.php\">View Listing</a>
+
                                 </div>
                                 </div>";
-
+                                $_SESSION['listing_id'] = $row[0];
                             }
                         } else {
                            echo "<h3>No Results</h3>";

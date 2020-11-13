@@ -1,6 +1,6 @@
 <?php
 
- include ('server.php'); 
+include ('server.php'); 
 
   // 1. Create a database connection
 $dbhost = "localhost";
@@ -30,18 +30,30 @@ if(mysqli_connect_errno()) {
 </head>
 <body>
 
-    <!-- NAVIGATION BAR -->
+	<!-- NAVIGATION BAR -->
     <div class="topnav">
         <div class="topnav-right">
             <a href="index.php#home">Home</a>
-            <a href="signup.php">Sign Up</a>
-            <a href="login.php">Log In</a>
+           <!--  <a href="signup.php">Sign Up</a>
+            <a href="login.php">Log In</a> -->
+            
+            <?php if (!isset($_SESSION['email'])) : ?>
+                <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
+                <div style="display: flex">
+                     <a href="signup.php">Sign Up</a>
+                     <a href="login.php">Log In</a>
+                </div>
+
+            <?php endif ?>
+
             <!-- if the user logs in print information about them -->
             <?php if (isset($_SESSION['email'])) : ?>
                 <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
-                <div style="display: block">
-                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong> <a href="logout.php" style="color:red">Logout</a></p>
+                <div style="display: flex">
+                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+                    <a href="logout.php" style="color:red">Logout</a>
                 </div>
+
             <?php endif ?>
         </div>
     </div>
@@ -54,8 +66,10 @@ if(mysqli_connect_errno()) {
 			<?php
 
 			//$LISTING_ID WILL NEED TO TAKE IN THE INPUT FROM THE HOME SCREEN
+
 			$listing_id = $_GET['varname'];
 			// $listing_id = "R2515566";
+
 
 			//this works
 			// $file_path = "Images/R2515047/R2515047_1.jpg";
@@ -113,32 +127,42 @@ if(mysqli_connect_errno()) {
 
 			<?php 
 					//2. Perform database query
-				$query  = "SELECT * ";
-				$query .= "FROM property ";
+			$query  = "SELECT * ";
+			$query .= "FROM property ";
 				//PROPERTY.LISTING_ID WILL NEED TO BE PASSED IN
-				$query .= "WHERE property.listing_id = '{$listing_id}'";
+			$query .= "WHERE property.listing_id = '{$listing_id}'";
 				// $query .= "WHERE 1";
-				$result = mysqli_query($connection, $query);
+			$result = mysqli_query($connection, $query);
 					//Test if there was a query error
-				if (!$result) {
-					die("Database query failed.");
-				}
-				?>
+			if (!$result) {
+				die("Database query failed.");
+			}
+			?>
 
-				<?php
+			<?php
 				//3. Display all of the orderNumbers as options
-				while ($row = mysqli_fetch_assoc($result)) {
+			while ($row = mysqli_fetch_assoc($result)) {
 					// grabs the orderNumber row from the database
-					echo "<h2>$" .$row['price']. "</h2>";
-					echo "<h4>" .$row['address'] . " | " . $row['city'] . "</h4>";
-					echo "<h4>" .$row['baths'] . " baths | " . $row['beds'] . " beds</h4>";
-					echo "<h4>" .$row['sqft'] . " SQFT | " .$row['type'] . "</h4>";
-				}
+				echo "<h2>$" .$row['price']. "</h2>";
+				echo "<h4>" .$row['address'] . " | " . $row['city'] . "</h4>";
+				echo "<h4>" .$row['baths'] . " baths | " . $row['beds'] . " beds</h4>";
+				echo "<h4>" .$row['sqft'] . " SQFT | " .$row['type'] . "</h4>";
+			}
 			?>
 		</div>
 		<div class="main_info_right">
 			<ul>
-				<li><a href="#">Add to Favorites</a></li>
+
+
+				<!-- ALERT MESSAGE FOR FAVORITING -->
+				<script>
+					function myFunction() {
+						alert("Listing has been added to your favorites!");
+					}
+				</script>
+
+				<!-- <li><p onclick="alertFunction()">Add to Favorites</p></li> -->
+				<li><button onclick="myFunction()">Add to Favorites</button></li>
 			</ul>
 		</div>
 	</div>
@@ -198,11 +222,33 @@ if(mysqli_connect_errno()) {
 		<img src="Images/realtor_1.jpg" alt="Realtor headshot" width="500" height="600">
 
 		<div class="realtor_info">
-			<h3>John Doe</h3>
-			<ul>
-				<li>Languages: English</li>
-				<li>Contact: (604) 111-1111</li>
-			</ul>
+
+			<?php 
+					//2. Perform database query
+			$query  = "SELECT * ";
+			$query .= "FROM agents ";
+			$query .= "INNER JOIN property ";
+
+				//PROPERTY.LISTING_ID WILL NEED TO BE PASSED IN
+			$query .= "WHERE agents.agent_ID = property.property_agent_ID ";
+			$query .= "AND property.listing_id = '{$listing_id}'";
+				// $query .= "WHERE 1";
+			$result = mysqli_query($connection, $query);
+					//Test if there was a query error
+			if (!$result) {
+				die("Database query failed.");
+			}
+			?>
+
+			<?php
+				//3. Display all of the orderNumbers as options
+			while ($row = mysqli_fetch_assoc($result)) {
+					// grabs the orderNumber row from the database
+				echo "<h3>" .$row['name']. "</h3>";
+				echo "<h5>" .$row['ph_no']. "</h5>";
+				echo "<h5>" .$row['email']. "</h5>";
+			}
+			?>
 		</div>
 	</div>
 
@@ -215,10 +261,10 @@ if(mysqli_connect_errno()) {
 
 	<script src="JS/content_page.js"></script>
 
-<?php
+	<?php
 	// 4. Release returned data
-mysqli_free_result($result);
-?>
+	mysqli_free_result($result);
+	?>
 
 </body>
 </html>
