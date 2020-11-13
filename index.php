@@ -95,6 +95,9 @@
 
         </div>
 
+        <br>
+        <br>
+
 <!-- Search bar Under construction -->
 <!--    <div class="container">
             <div class="row">
@@ -125,6 +128,7 @@
                                 <div class="sidebar-sticky">
 
                                 <div class="container-filter">
+                                <br>
                                     <h5>Filter:</h5>
                                     <form method="post">
 
@@ -213,21 +217,21 @@
 
 
                     // Including checkbox field
-                    if($type_house == 1 || type_condo == 1 || type_townhouse == 1) {
-                        $send_sql .= " WHERE (TYPE=";
+                    if($type_house == 1 || $type_condo == 1 || $type_townhouse == 1) {
+                        $send_sql .= " WHERE TYPE IN (";
                         if($type_house == 1) {
                             $send_sql .= "'House'";
-                            if(type_condo == 1 || type_townhouse == 1) {
-                                $send_sql .= " OR ";
+                            if($type_condo == 1 || $type_townhouse == 1) {
+                                $send_sql .= " , ";
                             }
                         }
-                        if(type_condo == 1) {
+                        if($type_condo == 1) {
                             $send_sql .= " 'Condo' ";
-                            if(type_townhouse == 1) {
-                                $send_sql .= " OR ";
+                            if($type_townhouse == 1) {
+                                $send_sql .= " , ";
                             }
                         }
-                        if(type_townhouse == 1) {
+                        if($type_townhouse == 1) {
                             $send_sql .= " 'Townhouse' ";
                         }
                         $send_sql .= ")";
@@ -235,102 +239,91 @@
 
                     if($price_500 == 1 || $price_1m == 1 || $price_1over == 1) {
 
-                        if($type_house == 1 || type_condo == 1 || type_townhouse == 1) {
-                            $send_sql .= " AND (PRICE";
+                        if($price_500 == 1 && $price_1m == 1 && $price_1over == 1) {
+
                         } else {
-                            $send_sql .= " WHERE (PRICE";
+                            if($type_house == 1 || $type_condo == 1 || $type_townhouse == 1) {
+                                $send_sql .= " AND (PRICE";
+                            } else {
+                                $send_sql .= " WHERE (PRICE";
+                            }
+    
+                            if($price_500 == 1 && $price_1m == 0 && $price_1over == 0) {
+                                $send_sql .= " < 500000)";
+                            }
+    
+                            if($price_500 == 0 && $price_1m == 1 && $price_1over == 0) {
+                                $send_sql .= " >= 500000 && PRICE <= 1000000)";
+                            }
+    
+                            if($price_500 == 0 && $price_1m == 0 && $price_1over == 1) {
+                                $send_sql .= " > 1000000)";
+                            }
+    
+                            if($price_500 == 1 && $price_1m == 1 && $price_1over == 0) {
+                                $send_sql .= " < 1000000)";
+                            }
+                            if($price_500 == 0 && $price_1m == 1 && $price_1over == 1) {
+                                $send_sql .= " > 500000)";
+                            }
+                            if($price_500 == 1 && $price_1m == 0 && $price_1over == 1) {
+                                $send_sql .= " < 500000 || > 1000000)";
+                            }
+
                         }
 
-                        if($price_500 == 1 || $price_1m == 0 || $price_1over == 0) {
-                            $send_sql .= " < 500000)";
-                        }
-
-                        if($price_500 == 0 || $price_1m == 1 || $price_1over == 0) {
-                            $send_sql .= " >= 500000 && PRICE <= 1000000)";
-                        }
-
-                        if($price_500 == 0 || $price_1m == 0 || $price_1over == 1) {
-                            $send_sql .= " > 1000000)";
-                        }
-
-                        if($price_500 == 1 || $price_1m == 1 || $price_1over == 0) {
-                            $send_sql .= " < 1000000)";
-                        }
-                        if($price_500 == 0 || $price_1m == 1 || $price_1over == 1) {
-                            $send_sql .= " > 500000)";
-                        }
-                        if($price_500 == 1 || $price_1m == 0 || $price_1over == 1) {
-                            $send_sql .= " < 500000 || > 1000000)";
-                        }
                     }
+
+                    $send_sql .= ";";
 
                     $resultTable = mysqli_query($db, $send_sql);
 
-                    echo $send_sql;
+                    //echo $send_sql;
                     
                 ?>
                 
 
                 <div class="col-6">
 
-                <?php   
-                    // while($subject = mysqli_fetch_row($resultTable)) {
-                    //     echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">"
-                    //     echo "<img class=\"card-img-left flex-auto d-none d-md-block\" src=\"Images/house_1.jpg\" alt=\"Card image cap\" width=\"40%\">"
-                    //     echo "<h3 class=\"mb-0\">
-                    //             <a class=\"text-dark\" href=\"#\">$1,799,000</a>
-                    //         </h3>"
-                    //     echo "<strong class=\"d-inline-block mb-2 text-primary\">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
-                    //             <div class=\"mb-1 text-muted\">4 BED | 3 FULL BATH | 1 HALF BATH</div>
-                    //             <p class=\"card-text mb-auto\">2072 SQFT | HOUSE</p>
-                    //             <a href=\"content_page.php\">View Listing</a></div></div><br>"
+                <?php
 
-                    //     foreach($subject as $value) {
-                    //         echo "<td>" . $value . "</td>";
-                    //     }
-                    // }
+                if($row = mysqli_fetch_row($resultTable)){
+                    echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
+                        <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
+                        <div class=\"card-body d-flex flex-column align-items-start\">
+                            <h3 class=\"mb-0\">
+                                <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
+                            </h3>
+                            <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
+                            <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
+                            <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
+                            <a href=\"content_page.php\">View Listing</a>
+                        </div>
+                    </div>";
+
+                        while($row = mysqli_fetch_row($resultTable)) {
+                            echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
+                        <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
+                        <div class=\"card-body d-flex flex-column align-items-start\">
+                            <h3 class=\"mb-0\">
+                                <a class=\"text-dark\" href=\"#\">$" . $row[4] . "</a>
+                            </h3>
+                            <strong class=\"d-inline-block mb-2 text-primary\">" . $row[3] . ", " . $row[2] . "</strong>
+                            <div class=\"mb-1 text-muted\">" . $row[5] . " BED | " . $row[6] . " BATH</div>
+                            <p class=\"card-text mb-auto\">" . $row[7] . " SQFT | " . $row[8]. "</p>
+                            <a href=\"content_page.php\">View Listing</a>
+                        </div>
+                    </div>";
+
+                        }
+                   } else {
+                       echo "<h3>No Results</h3>";
+                   }
+
+                   
 
                 ?>
 
-                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
-                        <div class="card-body d-flex flex-column align-items-start">
-                            <h3 class="mb-0">
-                                <a class="text-dark" href="#">$1,799,000</a>
-                            </h3>
-                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
-                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
-                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
-                            <a href="content_page.php">View Listing</a>
-                        </div>
-                    </div>
-
-                    <br>
-                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
-                        <div class="card-body d-flex flex-column align-items-start">
-                            <h3 class="mb-0">
-                                <a class="text-dark" href="#">$1,799,000</a>
-                            </h3>
-                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
-                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
-                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
-                            <a href="content_page.php">View Listing</a>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
-                        <img class="card-img-left flex-auto d-none d-md-block" src="Images/house_1.jpg" alt="Card image cap" width="40%">
-                        <div class="card-body d-flex flex-column align-items-start">
-                            <h3 class="mb-0">
-                                <a class="text-dark" href="#">$1,799,000</a>
-                            </h3>
-                            <strong class="d-inline-block mb-2 text-primary">7 HATTFIELD PL|HAMILTON, ON, L9H 4J7</strong>
-                            <div class="mb-1 text-muted">4 BED | 3 FULL BATH | 1 HALF BATH</div>
-                            <p class="card-text mb-auto">2072 SQFT | HOUSE</p>
-                            <a href="content_page.php">View Listing</a>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-1"></div>
             </div>
