@@ -1,3 +1,7 @@
+
+<?php include('signup_post.php'); ?>
+
+<!DOCTYPE html>
 <html>
 <head>
 <title>IAT352</title>
@@ -23,7 +27,7 @@
 
 
 <div class="form_container"> 
-<form id="signup" action="signin_post.php" method="POST">
+<form id="signin" action="signin.php" method="POST">
 
 <h2>Sign In</h2>
 
@@ -37,13 +41,13 @@
     <fieldset>
 
 
-	<input type="password" name="pw" placeholder="Password" required>
+	<input type="password" name="password" placeholder="Password" required>
 
 	</fieldset>
     <fieldset>
 
 
-	<button name="submit" type="submit" id="signup-submit" >Sign In</button>
+	<button name="login" type="submit" id="signup-submit" >Sign In</button>
     </fieldset>
 
      <fieldset>

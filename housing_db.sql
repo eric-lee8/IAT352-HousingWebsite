@@ -70,10 +70,17 @@ UNLOCK TABLES;
 /*Table structure for table `members` */
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
+  /*
   `email` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `ph_no` varchar(100) NOT NULL,
+  */
+  `fname` varchar(100) NOT NULL,
+  `lname` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

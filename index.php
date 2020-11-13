@@ -1,3 +1,5 @@
+
+
 <html>
     <head>
         <title>IAT352</title>
@@ -19,6 +21,8 @@
         <a href="signup.php">Sign Up</a>
         </div>
     </div>
+
+
 
         <div class="container">
             <div class="col-6"></div>
@@ -57,6 +61,23 @@
 
         </div>
 
+    <div class="container">
+        <?php if (isset($_SESSION['success'])): ?>
+            <div class="error success">
+                <h3>
+                    <?php
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                    ?>
+                </h3>
+            </div>
+        <?php endif ?>
+
+        <?php if (isset($_SESSION["email"])): ?>
+            <p> Welcome <?php echo $_SESSION['email']; ?> </p>
+            <a href="index.php?logout='1'" > Log Out </a>
+        <?php endif ?>
+    </div>
 
         <div class="container">
             <div class="row">
