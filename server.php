@@ -1,63 +1,40 @@
 <?php
 
-	$dbhost = "localhost";
-	$dbuser = "root";
-	$dbpass = "";
-	$dbname = "justin_lau";
-	$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+	//connect to the database
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "justin_lau";
+$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-	//$db = db_connect();
-
-	  // Test if connection succeeded
-	if(mysqli_connect_errno()) {
+	// Test if connection succeeded
+if(mysqli_connect_errno()) {
 	    // if connection failed, skip the rest of PHP code, and print an error
-	    die("Database connection failed: " . 
-	        mysqli_connect_error() . 
-	        " (" . mysqli_connect_errno() . ")"
-    );
+	die("Database connection failed: " . 
+		mysqli_connect_error() . 
+		" (" . mysqli_connect_errno() . ")"
+	);
 }
 
-	// set initial values
-	$fname = "";				
-	$lname = "";
-	$pw = "";
-	$pwconfirm = "";
-	$email = "";
-	$errors = array();
+// if the register button is clicked
+if (isset($_POST['register'])) {
 
-	// detect form submission for sign up
-	if (isset($_POST["submit"])) {
+	$first_name = 
+	$fname = $_POST['fname'];
+	$lname = $_POST['lname'];
+	$pw = $_POST['pw'];
+	$pwconfirm = $_POST['pwconfirm'];
+	$email = $_POST['email'];
 
-		$fname = $_POST['fname'];
-		$lname = $_POST['lname'];
-		$pw = $_POST['pw'];
-		$pwconfirm = $_POST['pwconfirm'];
-		$email = $_POST['email'];
-		
-/*
-		if(empty($fname)) {
-			array_push($errors, "First name is required");
-		}
-		if(empty($lname)) {
-			array_push($errors, "Last name is required");
-		}
-		if(empty($pw)) {
-			array_push($errors, "Password is required");
-		}
 
-		if(empty($email)) {
-			array_push($errors, "Email is required");
-		}
 
-		*/
 
-		
-		if($pw != $pwconfirm) {
-			array_push($errors, "The two passwords do not match");
-			echo "The two passwords do not match<br />";
-		}
+	if($pw != $pwconfirm) {
+		array_push($errors, "The two passwords do not match");
+		echo "The two passwords do not match<br />";
+	}
 
-		if (count($errors) == 0) {
+	if (count($errors) == 0) {
 			$password = md5($pw); // encrypts pw before storing into database
 			$sql = "INSERT INTO members (fname, lname, password, email) VALUES ('$fname', '$lname', '$password', '$email')";
 			mysql_query($connection, $sql);
@@ -99,7 +76,7 @@
 
 
 
-			mysql_query($connection, $sql);
+		mysql_query($connection, $sql);
 	}
 
 
@@ -110,7 +87,7 @@
 		header('location: signin.php');
 	}
 
-	 ?>
+	?>
 
 
 
