@@ -28,7 +28,7 @@
         <h2>Log In</h2>
     </div>
 
-    <form method="post" action="login.php">
+    <form method="post" action="login.php"  id="signup">
         <!-- display validation errors here -->
         <?php include('errors.php'); ?>
 

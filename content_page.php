@@ -66,8 +66,10 @@ if(mysqli_connect_errno()) {
 			<?php
 
 			//$LISTING_ID WILL NEED TO TAKE IN THE INPUT FROM THE HOME SCREEN
-			$listing_id = $_SESSION['listing_id']; 
-			// $listing_id = "R2515566"; //hard coded
+
+			$listing_id = $_GET['varname'];
+			// $listing_id = "R2515566";
+
 
 			//this works
 			// $file_path = "Images/R2515047/R2515047_1.jpg";

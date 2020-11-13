@@ -372,10 +372,9 @@ img.hover-shadow {
 }
 
 
+
 #signup {
   background: #F9F9F9;
-  padding: 25px;
-  margin: 150px 0;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
@@ -389,7 +388,7 @@ img.hover-shadow {
   display: block;
 }
 
-fieldset {
+.input-group {
   border: medium none !important;
   margin: 0 0 10px;
   min-width: 100%;
@@ -397,8 +396,8 @@ fieldset {
   width: 100%;
 }
 
-#signup input[type="fname"],
-#signup input[type="lname"],
+#signup input[type="first_name"],
+#signup input[type="last_name"],
 #signup input[type="password"],
 #signup input[type="email"]
 {
@@ -409,8 +408,8 @@ fieldset {
   padding: 10px;
 }
 
-#signup input[type="fname"]:hover,
-#signup input[type="lname"]:hover,
+#signup input[type="first_name"]:hover,
+#signup input[type="last_name"]:hover,
 #signup input[type="password"]:hover,
 #signup input[type="email"]:hover,
 #signup textarea:hover {

@@ -32,7 +32,7 @@
         <h2>Register</h2>
     </div>
 
-    <form method="post" action="signup.php">
+    <form method="post" action="signup.php" id="signup">
         <!-- display validation errors here -->
         <?php include('errors.php'); ?>
         
