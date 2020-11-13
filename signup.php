@@ -24,18 +24,21 @@
 
 <div class="form_container"> 
 <form id="signup" action="signup_post.php" method="POST">
+
 <h2>Sign Up</h2>
 <h5>*Easily manage your Favourite Listings</h5>
 <h5>*Contact Realtors directly</h5>
 
+ <?php include('errors.php'); ?> 
+
     <fieldset>
 	
-	<input type="firstName"  name="fname" required placeholder="First Name">
+	<input type="fname"  name="fname" required placeholder="First Name" >
 
     </fieldset>
     <fieldset>
 
-	<input type="lastName"  name="lname" required placeholder="Last Name"> 
+	<input type="lname"  name="lname" required placeholder="Last Name" > 
 
     </fieldset>
     <fieldset>
@@ -50,7 +53,7 @@
     </fieldset>
     <fieldset>
 
-    <input type="email" name="email" required placeholder="Email"> 
+    <input type="email" name="email" required placeholder="Email" > 
 
     </fieldset>
     <fieldset>
@@ -59,7 +62,7 @@
     </fieldset>
 
   <fieldset>
-    <h3><a href="signin.php">Already have an Account?</a></h3>
+    <h3><a href="signin.php">Already a Member?</a></h3>
       </fieldset>
 </form>
 
