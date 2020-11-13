@@ -283,11 +283,13 @@ img.hover-shadow {
   text-decoration: none;
 }
 
-.main_info_left {
+.main_info_left {  
   width: 70%;
 }
 
 .main_info_right {
+  background-color: black;
+  color: blue;
   width: 30%;
 }
 

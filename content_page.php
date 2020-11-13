@@ -1,3 +1,22 @@
+<?php
+  // 1. Create a database connection
+$dbhost = "localhost";
+$dbuser = "root";
+$dbpass = "";
+$dbname = "justin_lau";
+$connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+
+  // Test if connection succeeded
+if(mysqli_connect_errno()) {
+	// if connection failed, skip the rest of PHP code, and print an error
+	die("Database connection failed: " . 
+		mysqli_connect_error() . 
+		" (" . mysqli_connect_errno() . ")"
+	);
+}
+?>
+
+
 <html lang="en">
 <head>
 	<title>IAT352</title>
@@ -27,13 +46,60 @@
 	<!-- IMAGES SECTION -->
 	<div class="images_section center">
 		<div class="main_image">
-			<a href= Images/house_1.jpg target="blank"><img src="Images/house_1.jpg" alt="House 1"></a>
+
+			
+			<?php
+
+			//$LISTING_ID WILL NEED TO TAKE IN THE INPUT FROM THE HOME SCREEN
+			$listing_id = "R2515047"; //hard coded
+			// $listing_id = "R2515566";
+
+			//this works
+			// $file_path = "Images/R2515047/R2515047_1.jpg";
+
+			//test
+			$file_path = "Images/";
+			$file_path .= "{$listing_id}/";
+			$file_path .= "{$listing_id}_1.jpg";
+
+			// '{$listing_id}'
+
+			// \Images\R2515047
+
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+			?>
+
+			<!-- HTML CODE -->
+			<!-- <a href= Images/house_1.jpg target="blank"><img src="Images/house_1.jpg" alt="House 1"></a> -->
+
 		</div>
 
 		<div class="side_image">
-			<a href= Images/house_2.jpg target="blank"><img src="Images/house_2.jpg" alt="House 2"></a>
-			<a href= Images/house_3.jpg target="blank"><img src="Images/house_3.jpg" alt="House 3"></a>
-			<a href= Images/house_4.jpg target="blank"><img src="Images/house_4.jpg" alt="House 4"></a>
+			
+			<?php
+
+			$file_path = "Images/";
+			$file_path .= "{$listing_id}/";
+			$file_path .= "{$listing_id}_2.jpg";
+
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+
+			$file_path = "Images/";
+			$file_path .= "{$listing_id}/";
+			$file_path .= "{$listing_id}_3.jpg";
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+
+			$file_path = "Images/";
+			$file_path .= "{$listing_id}/";
+			$file_path .= "{$listing_id}_4.jpg";
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+			?>
+
+
+			<!-- HTML CODE -->
+			<!-- <a href= Images/house_2.jpg target="blank"><img src="Images/house_2.jpg" alt="House 2"></a> -->
+			<!-- <a href= Images/house_3.jpg target="blank"><img src="Images/house_3.jpg" alt="House 3"></a> -->
+			<!-- <a href= Images/house_4.jpg target="blank"><img src="Images/house_4.jpg" alt="House 4"></a> -->
 		</div>
 	</div>
 
@@ -41,16 +107,35 @@
 	<!-- MAIN INFORMATION -->
 	<div class="main_info center">
 		<div class="main_info_left">
-			<h2>$1,799,000</h2>
-			<h4>7 HATTFIELD PL | HAMILTON, ON, L9H 4J7</h4>
-			<h4>4 BED | 3 FULL BATH | 1 HALF BATH</h4>
-			<h4>2072 SQFT | HOUSE</h4>
+
+			<?php 
+					//2. Perform database query
+				$query  = "SELECT * ";
+				$query .= "FROM property ";
+				//PROPERTY.LISTING_ID WILL NEED TO BE PASSED IN
+				$query .= "WHERE property.listing_id = '{$listing_id}'";
+				// $query .= "WHERE 1";
+				$result = mysqli_query($connection, $query);
+					//Test if there was a query error
+				if (!$result) {
+					die("Database query failed.");
+				}
+				?>
+
+				<?php
+				//3. Display all of the orderNumbers as options
+				while ($row = mysqli_fetch_assoc($result)) {
+					// grabs the orderNumber row from the database
+					echo "<h2>$" .$row['price']. "</h2>";
+					echo "<h4>" .$row['address'] . " | " . $row['city'] . "</h4>";
+					echo "<h4>" .$row['baths'] . " baths | " . $row['beds'] . " beds</h4>";
+					echo "<h4>" .$row['sqft'] . " SQFT | " .$row['type'] . "</h4>";
+				}
+			?>
 		</div>
 		<div class="main_info_right">
 			<ul>
 				<li><a href="#">Add to Favorites</a></li>
-				<li><a href="#">Share with Friends</a></li>
-				<li> <a href="#">Message Seller</a></li>
 			</ul>
 		</div>
 	</div>
@@ -127,5 +212,15 @@
 
 	<script src="JS/content_page.js"></script>
 
+<?php
+	// 4. Release returned data
+mysqli_free_result($result);
+?>
+
 </body>
 </html>
+
+<?php
+  // 5. Close database connection
+mysqli_close($connection);
+?>
