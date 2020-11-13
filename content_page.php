@@ -1,4 +1,7 @@
 <?php
+
+ include ('server.php'); 
+
   // 1. Create a database connection
 $dbhost = "localhost";
 $dbuser = "root";
@@ -66,7 +69,7 @@ if(mysqli_connect_errno()) {
 
 			// \Images\R2515047
 
-			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
 			?>
 
 			<!-- HTML CODE -->
@@ -82,17 +85,17 @@ if(mysqli_connect_errno()) {
 			$file_path .= "{$listing_id}/";
 			$file_path .= "{$listing_id}_2.jpg";
 
-			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
 
 			$file_path = "Images/";
 			$file_path .= "{$listing_id}/";
 			$file_path .= "{$listing_id}_3.jpg";
-			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
 
 			$file_path = "Images/";
 			$file_path .= "{$listing_id}/";
 			$file_path .= "{$listing_id}_4.jpg";
-			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\">";
+			echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
 			?>
 
 
