@@ -138,7 +138,8 @@ if(mysqli_connect_errno()) {
 		</div>
 		<div class="main_info_right">
 			<ul>
-				<li><a href="#">Add to Favorites</a></li>
+				<!-- <li><p onclick="alertFunction()">Add to Favorites</p></li> -->
+				<li><button onclick="myFunction()">Add to Favorites</button></li>
 			</ul>
 		</div>
 	</div>
@@ -227,3 +228,11 @@ mysqli_free_result($result);
   // 5. Close database connection
 mysqli_close($connection);
 ?>
+
+
+<!-- ALERT MESSAGE FOR FAVORITING -->
+<script>
+function myFunction() {
+  alert("Listing has been added to your favorites!");
+}
+</script>

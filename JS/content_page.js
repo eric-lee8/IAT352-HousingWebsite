@@ -18,3 +18,8 @@ var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
   modal.style.display = "none";
 }
+
+
+function alertFunction() {
+  alert("Hello! I am an alert box!");
+}
