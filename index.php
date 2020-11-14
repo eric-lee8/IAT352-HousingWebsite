@@ -102,13 +102,13 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="Images/house_1.jpg" alt="First slide">
+                        <img class="d-block w-100" src="Images/Home-1.png" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="Images/house_1.jpg" alt="Second slide">
+                        <img class="d-block w-100" src="Images/Home-2.png" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="Images/house_1.jpg" alt="Third slide">
+                        <img class="d-block w-100" src="Images/Home-3.png" alt="Third slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
