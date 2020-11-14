@@ -81,6 +81,7 @@
                 <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
                 <div style="display: flex">
                     <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+                    <a href="profile.php" style="color:white">Edit Profile</a>
                     <a href="logout.php" style="color:red">Logout</a>
                 </div>
 
