@@ -41,10 +41,6 @@ CREATE TABLE `property` (
   `type` varchar(100) NOT NULL,
   `property_agent_ID` int(11) NOT NULL,
   PRIMARY KEY (`listing_id`),
-  -- KEY `agent_ID` (`agent_ID`),
-  -- CONSTRAINT `FK_PropertyAgent` FOREIGN KEY (`agent_ID`) REFERENCES `agents` (`agent_ID`)
-  -- CONSTRAINT `FK_PropertyAgent` FOREIGN KEY (`agent_ID`) REFERENCES `agents` (`agent_ID`)
-
   KEY `property_agent_ID` (`property_agent_ID`),
   CONSTRAINT `property_ibfk_1` FOREIGN KEY (`property_agent_ID`) REFERENCES `agents` (`agent_ID`)
 
@@ -62,26 +58,14 @@ INSERT INTO `property` (`listing_id`, `beds`, `baths`, `sqft`, `date_listed`, `c
 ('R2515690', 9, 8, 6135, 'Nov 07 2020', 'Surrey', '15094 84 AVE', 1788800, 'House', 3041),
 ('R2515103', 6, 10, 8503, 'Nov 06 2020', 'Surrey', '16230 90 AVE', 2688000, 'House', 8749),
 ('R2511070', 2, 1, 744, 'Oct 21 2020', 'Surrey', '31 - 8266 KING GEORGE BLVD', 68800,  'House', 5216),
-('R2514986', 2, 2, 1152, 'Nov 03 2020', 'Surrey', '307 - 10581 140 ST', 620000, 'Condo', 4725),
-('R2517373', 5, 2, 2000, 'Nov 13 2020', 'Surrey', '11684 97A AVE', 989900, 'House', 3041),
-('R2517278', 9, 9, 6075, 'Nov 13 2020', 'Surrey', '11348 WALLACE DR', 2199900, 'House', 8749),
-('R2517198', 8, 5, 4510, 'Nov 13 2020', 'Surrey', '15445 110A Ave', 1525000,  'House', 5216),
-('R2515803', 2, 2, 836, 'Nov 12 2020', 'Surrey', '412 - 16398 64 AVE', 465000, 'Condo', 3041),
-('R2517401', 10, 9, 6086, 'Nov 13 2020', 'Surrey', '7448 124B STREET', 1850000, 'Townhouse', 8749),
-('R2517098', 4, 4, 1666, 'Nov 12 2020', 'Surrey', '47 - 14285 64 AVE', 649000, 'Townhouse', 8749),
-('R2515758', 3, 4, 2303, 'Nov 11 2020', 'Surrey', '15 - 17097 64 AVE', 729900,  'Townhouse', 5216);
+('R2514986', 2, 2, 1152, 'Nov 03 2020', 'Surrey', '307 - 10581 140 ST', 620000, 'Condo', 4725);
 
 UNLOCK TABLES;
 
 /*Table structure for table `members` */
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
-  /*
-  `email` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `ph_no` varchar(100) NOT NULL,
-  */
+ 
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
