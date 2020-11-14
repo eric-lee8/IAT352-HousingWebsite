@@ -46,6 +46,7 @@
         <p>
             Not yet a member? <a href="signup.php">Sign up</a>
         </p>
+    </form>
 
 </body>
 
