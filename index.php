@@ -382,14 +382,13 @@
                             <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
                             <div class=\"card-body d-flex flex-column align-items-start\">
                             <h3 class=\"mb-0\">
-                            <a class=\"text-dark\" href=\"content_page.php\">$" . $row[7] . "</a>
+                            <a class=\"text-dark\" href=\"content_page.php?varname=" . $row[0] . "\">$" . $row[7] . "</a>
                             </h3>
 
                             <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
                             <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
                             <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
                             <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
-
                             </div>
                             </div>";
                             
@@ -399,7 +398,7 @@
                                 <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
                                 <div class=\"card-body d-flex flex-column align-items-start\">
                                 <h3 class=\"mb-0\">
-                                <a class=\"text-dark\" href=\"content_page\">$" . $row[7] . "</a>
+                                <a class=\"text-dark\" href=\"content_page.php?varname=" . $row[0] . "\">$" . $row[7] . "</a>
                                 </h3>
 
                                 <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>

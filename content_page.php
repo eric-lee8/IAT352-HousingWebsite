@@ -70,10 +70,6 @@ if(mysqli_connect_errno()) {
 			$listing_id = $_GET['varname'];
 			// $listing_id = "R2515566";
 
-
-			//this works
-			// $file_path = "Images/R2515047/R2515047_1.jpg";
-
 			//test
 			$file_path = "Images/";
 			$file_path .= "{$listing_id}/";
