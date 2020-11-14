@@ -18,6 +18,9 @@ if(mysqli_connect_errno()) {
 	);
 }
 
+if(empty($_SESSION['email'])) {
+  header('location: login.php');
+}
 
 ?>
 
@@ -64,77 +67,98 @@ if(mysqli_connect_errno()) {
 
            	<?php endif ?>
            </div>
-       </div>
+         </div>
 
-       <div class="profile_table">
+         <div class="profile_table">
 
 
-       	<h1>Edit Profile</h1>
+          <h1>Edit Profile</h1>
 
-       	<form method="post" action="profile.php"  id="edit_profile_form">
-       		
-       		<!-- GET DATA FROM THE FORM SUBMIT -->
-       		<?php
+          <form method="post" action="profile.php"  id="edit_profile_form">
+           
+           <!-- GET DATA FROM THE FORM SUBMIT -->
+           <?php
 		// set initial values
-       		$fname = "";
-       		$lname = "";
-       		$password = "";
-       		$email = "";
-       		$queryParameter = "";
-       		$session_email = $_SESSION['email'];
+           $fname = "";
+           $lname = "";
+           $password = "";
+           $email = "";
+           $queryParameter = "";
+           $session_email = $_SESSION['email'];
 
        	//perform query to get the user's data from the database
-       		$query = "SELECT * ";
-       		$query .= "FROM members ";
-       		$query .= "WHERE members.email = '{$session_email}'";
-       		$query .= $queryParameter;
+           $query = "SELECT * ";
+           $query .= "FROM members ";
+           $query .= "WHERE members.email = '{$session_email}'";
+           $query .= $queryParameter;
 
-       		$result = mysqli_query($connection, $query);
+           $result = mysqli_query($connection, $query);
 
-       		if (!$result) {
-       			die("Database query failed.");
-       		}
+           if (!$result) {
+            die("Database query failed.");
+          }
 
-       		while($row = mysqli_fetch_array($result))
-       		{
-       			$fname = $row['fname'];
-       			$lname = $row['lname'];
-       			$password = $row['password'];
-       			$email = $row['email'];
-       		}
+          while($row = mysqli_fetch_array($result))
+          {
+            $fname = $row['fname'];
+            $lname = $row['lname'];
+            $password = $row['password'];
+            $email = $row['email'];
+          }
 
        	// close php tag
-       		?>
+          ?>
 
-       		<?php
-       		echo "<h2>" . $_SESSION['email'] . "</h2>";
+          <?php
+          echo "<h2>" . $_SESSION['email'] . "</h2>";
        		//echo "<h2>" . $_POST['fname'] . "</h2>";
        		//echo "<h2>" . $_POST['lname'] . "</h2>";
-       		?>
+          ?>
 
-       		<!-- display validation errors here -->
-        	<?php include('errors.php'); ?>
+          <!-- display validation errors here -->
+          <?php include('errors.php'); ?>
 
-       		<div class="input-group">
-       			<label>First name</label>
-       			<input type="text" name="fname" value="<?php echo $fname; ?>">
-       		</div>
+          <div class="input-group">
+            <label>First name</label>
+            <input type="text" name="fname" value="<?php echo $fname; ?>">
+          </div>
 
-       		<div class="input-group">
-       			<label>Last name</label>
-       			<input type="text" name="lname" value="<?php echo $lname; ?>">
-       		</div>
+          <div class="input-group">
+            <label>Last name</label>
+            <input type="text" name="lname" value="<?php echo $lname; ?>">
+          </div>
 
-       		<div class="input-group">
-       			<button type="submit" name="edit_profile" class="btn">Save Edits</button>
-       		</div>
+          <div class="input-group">
+            <button type="submit" name="edit_profile" class="btn">Save Edits</button>
+          </div>
 
-       	</form>
+          <?php
+          // detect form submission
+          if (isset($_POST["edit_profile"])) { //if the user hits 'Submit'
+          echo "<p>Profile information updated successfully</p>";
 
-       </div>
+        }
+        ?>
+
+      </form>
+
+    </div>
 
 
 
 
-   </body>
-   </html>
+  </body>
+  </html>
+
+  <?php
+  // 4. Release returned data
+  mysqli_free_result($result);
+  ?>
+
+</body>
+</html>
+
+<?php
+  // 5. Close database connection
+mysqli_close($connection);
+?>
