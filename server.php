@@ -110,4 +110,54 @@ if (isset($_POST['login'])) {
 
 }
 
+
+
+
+// if the Save Edits button is clicked
+if (isset($_POST['edit_profile'])) {
+
+	$first_name = mysqli_real_escape_string($db, $_POST['fname']);
+	$last_name = mysqli_real_escape_string($db, $_POST['lname']);
+	$email = mysqli_real_escape_string($db, $_SESSION['email']);
+
+	//ensure that form fields are filled properly
+	if (empty($first_name)) {
+		array_push($errors, "First name is required");
+	}
+	if (empty($last_name)) {
+		array_push($errors, "Last name is required");
+	}
+
+	//check db for eisting user with same email
+	$email_check_query = "SELECT * FROM members WHERE email = '$email' LIMIT 1";
+	$result = mysqli_query($db, $email_check_query);
+	$email_in_use = mysqli_fetch_assoc($result);
+
+	// if($email_in_use) {
+	// 	if($email_in_use['email'] === $email) {
+	// 		array_push($errors, "Email is already in use");
+	// 	}
+	// }
+
+	// if there are no errors, edit information in the database
+	if (count($errors) == 0) {
+		
+		// $sql = "INSERT INTO `members` (`fname`, `lname`, `password`, `email`)
+		// 		VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
+		
+		// echo $first_name;
+		// echo $last_name;
+		// echo $email;
+
+		$sql = "UPDATE members ";
+		$sql .= "SET fname = '{$first_name}', lname = '{$last_name}' ";
+		$sql .= "WHERE members.email = '{$_SESSION['email']}'";
+		
+		mysqli_query($db, $sql);
+		$_SESSION['email'] = $email;
+		$_SESSION['success'] = "Profile information updated successfully.";
+		header ('location: profile.php');
+	}
+}
+
 ?>
