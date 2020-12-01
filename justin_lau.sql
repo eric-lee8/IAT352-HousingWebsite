@@ -1,5 +1,5 @@
--- CREATE DATABASE JUSTIN_LAU;
-USE JUSTIN_LAU;
+CREATE DATABASE JUSTIN_LAU_v2;
+USE JUSTIN_LAU_v2;
 
 /*Table structure for table `agents` */
 DROP TABLE IF EXISTS `agents`;

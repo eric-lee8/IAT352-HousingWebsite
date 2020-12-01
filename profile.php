@@ -110,7 +110,7 @@ if(empty($_SESSION['email'])) {
           ?>
 
           <?php
-          echo "<h2>" . $_SESSION['email'] . "</h2>";
+          echo "<h2>Welcome " . $_SESSION['email'] . "</h2>";
        		//echo "<h2>" . $_POST['fname'] . "</h2>";
        		//echo "<h2>" . $_POST['lname'] . "</h2>";
           ?>
@@ -134,11 +134,11 @@ if(empty($_SESSION['email'])) {
 
           <?php
           // detect form submission
-          if (isset($_POST["edit_profile"])) { //if the user hits 'Submit'
-          echo "<p>Profile information updated successfully</p>";
-
-        }
-        ?>
+          if (isset($_POST["edit_profile"]))
+          { //if the user hits 'Submit'
+            echo "<p>Profile information updated successfully</p>";
+          }
+          ?>
 
       </form>
 

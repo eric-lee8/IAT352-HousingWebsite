@@ -15,7 +15,7 @@ $errors = array();
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "justin_lau";
+$dbname = "justin_lau_v2";
 $db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 // Test if connection succeeded
@@ -128,17 +128,6 @@ if (isset($_POST['edit_profile'])) {
 		array_push($errors, "Last name is required");
 	}
 
-	//check db for eisting user with same email
-	$email_check_query = "SELECT * FROM members WHERE email = '$email' LIMIT 1";
-	$result = mysqli_query($db, $email_check_query);
-	$email_in_use = mysqli_fetch_assoc($result);
-
-	// if($email_in_use) {
-	// 	if($email_in_use['email'] === $email) {
-	// 		array_push($errors, "Email is already in use");
-	// 	}
-	// }
-
 	// if there are no errors, edit information in the database
 	if (count($errors) == 0) {
 		
@@ -155,9 +144,43 @@ if (isset($_POST['edit_profile'])) {
 		
 		mysqli_query($db, $sql);
 		$_SESSION['email'] = $email;
-		$_SESSION['success'] = "Profile information updated successfully.";
 		header ('location: profile.php');
 	}
 }
+
+
+// if the Add to Favorites button is clicked
+if (isset($_POST['add_to_favorites'])) {
+
+	//check db for existing user with same email
+	// $email_check_query = "SELECT * FROM members WHERE email = '$email' LIMIT 1";
+	// $result = mysqli_query($db, $email_check_query);
+	// $email_in_use = mysqli_fetch_assoc($result);
+
+	$email = $_SESSION['email'];
+	$listing_id = $_SESSION['listing_id'];
+
+	// if there are no errors, edit information in the database
+	if (count($errors) == 0) {
+		
+		echo "<h1> this is working </h1>";
+
+		// $sql = "INSERT INTO `members` (`fname`, `lname`, `password`, `email`)
+		// 		VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
+		
+		// echo $first_name;
+		// echo $last_name;
+		// echo $email;
+
+		$sql = "INSERT INTO `favorited_properties` (`email`, `property_listing_id`)
+				VALUES ('$email', '$listing_id')";
+		mysqli_query($db, $sql);
+		$_SESSION['success'] = "Property successfully added to favorites!";
+
+		// header ('location: profile.php');
+	}
+}
+
+
 
 ?>
