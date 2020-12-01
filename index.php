@@ -2,6 +2,33 @@
 
 include ('server.php'); 
 
+// set initial values
+$fname = "";
+$lname = "";
+$email = "";
+$queryParameter = "";
+if(isset($_SESSION['email'])){
+    $session_email = $_SESSION['email'];
+    //perform query to get the user's data from the database
+    $query = "SELECT * ";
+    $query .= "FROM members ";
+    $query .= "WHERE members.email = '{$session_email}'";
+    $query .= $queryParameter;
+
+    $result = mysqli_query($connection, $query);
+
+    if (!$result) {
+      die("Database query failed.");
+  }
+
+  while($row = mysqli_fetch_array($result))
+  {
+      $fname = $row['fname'];
+      $lname = $row['lname'];
+      $email = $row['email'];
+  }
+}
+
 // close php tag
 ?>
 
@@ -36,7 +63,7 @@ include ('server.php');
          <!-- if the user logs in print information about them -->
          <?php if (isset($_SESSION['email'])) : ?>
             <div style="display: flex">
-              <p style="color:white">Welcome <strong><?php echo $first_name; ?></strong></p>
+              <p style="color:white">Welcome <strong><?php echo $fname; ?></strong></p>
               <a href="profile.php" style="color:white">Edit Profile</a>
               <a href="logout.php" style="color:red">Logout</a>
           </div>
