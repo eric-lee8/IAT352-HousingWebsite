@@ -1,10 +1,51 @@
 <?php
 
-include ('header.php'); 
+include ('server.php'); 
 
 // close php tag
 ?>
 
+<html lang="en">
+<head>
+    <title>IAT 352 Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/content_page.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <div class="topnav">
+      <div class="topnav-right">
+        <a href="index.php#home">Home</a>
+           <!--  <a href="signup.php">Sign Up</a>
+            <a href="login.php">Log In</a> -->
+            
+            <?php if (!isset($_SESSION['email'])) : ?>
+              <div style="display: flex">
+                 <a href="signup.php">Sign Up</a>
+                 <a href="login.php">Log In</a>
+             </div>
+
+         <?php endif ?>
+
+         <!-- if the user logs in print information about them -->
+         <?php if (isset($_SESSION['email'])) : ?>
+            <div style="display: flex">
+              <p style="color:white">Welcome <strong><?php echo $first_name; ?></strong></p>
+              <a href="profile.php" style="color:white">Edit Profile</a>
+              <a href="logout.php" style="color:red">Logout</a>
+          </div>
+
+      <?php endif ?>
+  </div>
+</div>
+
+    <!-- CAROUSEL -->
 <div class="container">
     <div class="col-6"></div>
 
@@ -281,7 +322,7 @@ include ('header.php');
 
                     $send_sql .= ";";
 
-                    $resultTable = mysqli_query($connection, $send_sql);
+                    $resultTable = mysqli_query($db, $send_sql);
 
                     //echo $send_sql;
                     
