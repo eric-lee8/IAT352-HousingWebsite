@@ -47,3 +47,40 @@ if(isset($_SESSION['email'])){
 
 // close php tag
 ?>
+
+
+<html lang="en">
+<head>
+    <title>IAT352</title>
+    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="CSS/content_page.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <div class="topnav">
+        <div class="topnav-right">
+            <a href="index.php#home">Home</a>
+           <!--  <a href="signup.php">Sign Up</a>
+            <a href="login.php">Log In</a> -->
+            
+            <?php if (!isset($_SESSION['email'])) : ?>
+                <div style="display: flex">
+                 <a href="signup.php">Sign Up</a>
+                 <a href="login.php">Log In</a>
+             </div>
+
+         <?php endif ?>
+
+         <!-- if the user logs in print information about them -->
+         <?php if (isset($_SESSION['email'])) : ?>
+            <div style="display: flex">
+                <p style="color:white">Welcome <strong><?php echo $fname; ?></strong></p>
+                <a href="profile.php" style="color:white">Edit Profile</a>
+                <a href="logout.php" style="color:red">Logout</a>
+            </div>
+
+        <?php endif ?>
+    </div>
+</div>
