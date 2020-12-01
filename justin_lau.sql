@@ -89,20 +89,3 @@ CREATE TABLE IF NOT EXISTS `members` (
 
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-/*Table structure for table `favorited_properties` */
-DROP TABLE IF EXISTS `favorited_properties`;
-CREATE TABLE IF NOT EXISTS `favorited_properties` (
-
-  `email` varchar(255) NOT NULL,
-  `property_listing_id` varchar(100) NOT NULL,
-
-  KEY `email` (`email`),
-  CONSTRAINT `email_ibfk_1` FOREIGN KEY (`email`) REFERENCES `members` (`email`),
-
-  KEY `property_listing_id` (`property_listing_id`),
-  CONSTRAINT `property_listing_ibfk_1` FOREIGN KEY (`property_listing_id`) REFERENCES `property` (`listing_id`)
-
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
