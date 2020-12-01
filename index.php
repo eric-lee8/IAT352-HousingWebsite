@@ -1,135 +1,119 @@
-<?php include ('server.php'); 
+<?php
 
-//if user is not logged in, they cannot access this page
-// if(empty($_SESSION['email'])) {
-//     header('location: login.php');
-// }
+include ('server.php'); 
 
+// set initial values
+$fname = "";
+$lname = "";
+$email = "";
+$queryParameter = "";
+if(isset($_SESSION['email'])){
+    $session_email = $_SESSION['email'];
+    //perform query to get the user's data from the database
+    $query = "SELECT * ";
+    $query .= "FROM members ";
+    $query .= "WHERE members.email = '{$session_email}'";
+    $query .= $queryParameter;
+
+    $result = mysqli_query($db, $query);
+
+    if (!$result) {
+      die("Database query failed.");
+  }
+
+  while($row = mysqli_fetch_array($result))
+  {
+      $fname = $row['fname'];
+      $lname = $row['lname'];
+      $email = $row['email'];
+  }
+}
+
+// close php tag
 ?>
 
-
-<html>
+<html lang="en">
 <head>
-    <title>IAT352</title>
+    <title>IAT 352 Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/content_page.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
-    <?php
-            // Credentials
-    define("DB_SERVER", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASS", "");
-    define("DB_NAME", "justin_lau");
-
-            // Creating database connection
-    function db_connect() {
-        $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-        return $connection;
-
-                // Test is connection succeeded
-        if(mysqli_connect_erro()) {
-                    // if connection failed, skip the reest of PHP code and print error
-            die("Database connection failed: ". mysqli_connect_error() . " (" . mysqli_connect_errorno() . ")" );
-        }
-    }
-
-            // Disconnecting Database connection
-    function db_disconnect($connection) {
-        if(!isset($connection)) {
-            mysqli_close($connection);
-        }
-    }
-
-            // Query Functions:
-
-            // Get all 
-    function find_all_db() {
-        global $db;
-
-        $sql = "SELECT * FROM property";
-        $result = mysqli_query($db, $sql);
-        return $result;
-    }
-    ?>
-
     <!-- NAVIGATION BAR -->
     <div class="topnav">
-        <div class="topnav-right">
-            <a href="index.php#home">Home</a>
+      <div class="topnav-right">
+        <a href="index.php#home">Home</a>
            <!--  <a href="signup.php">Sign Up</a>
             <a href="login.php">Log In</a> -->
             
             <?php if (!isset($_SESSION['email'])) : ?>
-                <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
-                <div style="display: flex">
-                     <a href="signup.php">Sign Up</a>
-                     <a href="login.php">Log In</a>
+              <div style="display: flex">
+                 <a href="signup.php">Sign Up</a>
+                 <a href="login.php">Log In</a>
+             </div>
+
+         <?php endif ?>
+
+         <!-- if the user logs in print information about them -->
+         <?php if (isset($_SESSION['email'])) : ?>
+            <div style="display: flex">
+              <p style="color:white">Welcome <strong><?php echo $fname; ?></strong></p>
+              <a href="profile.php" style="color:white">Edit Profile</a>
+              <a href="logout.php" style="color:red">Logout</a>
+          </div>
+
+      <?php endif ?>
+  </div>
+</div>
+
+    <!-- CAROUSEL -->
+<div class="container">
+    <div class="col-6"></div>
+
+    <div class="col-12">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="Images/Home-1.png" alt="First slide">
                 </div>
-
-            <?php endif ?>
-
-            <!-- if the user logs in print information about them -->
-            <?php if (isset($_SESSION['email'])) : ?>
-                <!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
-                <div style="display: flex">
-                    <p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
-                    <a href="profile.php" style="color:white">Edit Profile</a>
-                    <a href="logout.php" style="color:red">Logout</a>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="Images/Home-2.png" alt="Second slide">
                 </div>
-
-            <?php endif ?>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="col-6"></div>
-
-        <div class="col-12">
-
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="Images/Home-1.png" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="Images/Home-2.png" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="Images/Home-3.png" alt="Third slide">
-                    </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="Images/Home-3.png" alt="Third slide">
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-
-        <div class="col-6"></div>
-
     </div>
 
-    <br>
-    <br>
+    <div class="col-6"></div>
 
-    <!-- Search bar Under construction -->
+</div>
+
+<br>
+<br>
+
+<!-- Search bar Under construction -->
 <!--    <div class="container">
             <div class="row">
                 <div class="col-3"></div>
@@ -270,8 +254,6 @@
                 </div>
 
                 <?php
-
-                $db = db_connect();
 
                     // PHP code for when the form is submitted as POST
                 if($_SERVER["REQUEST_METHOD"] == "POST") {

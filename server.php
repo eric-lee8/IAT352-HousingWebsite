@@ -70,7 +70,7 @@ if (isset($_POST['register'])) {
 	if (count($errors) == 0) {
 		$encrypt_password = md5($password); // encrypt password before storing in database (security)
 		$sql = "INSERT INTO `members` (`fname`, `lname`, `password`, `email`)
-				VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
+		VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
 		mysqli_query($db, $sql);
 		$_SESSION['email'] = $email;
 		$_SESSION['success'] = "You are now logged in.";
@@ -128,17 +128,6 @@ if (isset($_POST['edit_profile'])) {
 		array_push($errors, "Last name is required");
 	}
 
-	//check db for eisting user with same email
-	$email_check_query = "SELECT * FROM members WHERE email = '$email' LIMIT 1";
-	$result = mysqli_query($db, $email_check_query);
-	$email_in_use = mysqli_fetch_assoc($result);
-
-	// if($email_in_use) {
-	// 	if($email_in_use['email'] === $email) {
-	// 		array_push($errors, "Email is already in use");
-	// 	}
-	// }
-
 	// if there are no errors, edit information in the database
 	if (count($errors) == 0) {
 		
@@ -154,10 +143,47 @@ if (isset($_POST['edit_profile'])) {
 		$sql .= "WHERE members.email = '{$_SESSION['email']}'";
 		
 		mysqli_query($db, $sql);
+
 		$_SESSION['email'] = $email;
-		$_SESSION['success'] = "Profile information updated successfully.";
+		$_SESSION['success'] = "Profile updated successfully";
+
 		header ('location: profile.php');
 	}
 }
+
+
+// if the Add to Favorites button is clicked
+if (isset($_POST['add_to_favorites'])) {
+
+	//check db for existing user with same email
+	// $email_check_query = "SELECT * FROM members WHERE email = '$email' LIMIT 1";
+	// $result = mysqli_query($db, $email_check_query);
+	// $email_in_use = mysqli_fetch_assoc($result);
+
+	$email = $_SESSION['email'];
+	$listing_id = $_SESSION['listing_id'];
+
+	//check db for eisting user with same email
+	$duplicate_check_query = "SELECT * FROM favorited_properties WHERE email = '$email' AND property_listing_id = '$listing_id' LIMIT 1";
+	$result = mysqli_query($db, $duplicate_check_query);
+	$already_favorited = mysqli_fetch_assoc($result);
+
+	if($already_favorited) {
+		// array_push($errors, "You have already favorited this property!");
+		echo "You already favorited this";
+	}
+
+	// if there are no errors, save user to database
+	if(!$already_favorited){
+		if (count($errors) == 0) {
+			$sql = "INSERT INTO `favorited_properties` (`email`, `property_listing_id`)
+			VALUES ('$email', '$listing_id')";
+			mysqli_query($db, $sql);
+		}
+	}
+}
+		
+
+
 
 ?>
