@@ -15,7 +15,7 @@ if(isset($_SESSION['email'])){
     $query .= "WHERE members.email = '{$session_email}'";
     $query .= $queryParameter;
 
-    $result = mysqli_query($connection, $query);
+    $result = mysqli_query($db, $query);
 
     if (!$result) {
       die("Database query failed.");

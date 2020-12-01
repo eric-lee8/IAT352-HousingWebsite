@@ -6,6 +6,33 @@ if(empty($_SESSION['email'])) {
   header('location: login.php');
 }
 
+// set initial values
+$fname = "";
+$lname = "";
+$email = "";
+$queryParameter = "";
+if(isset($_SESSION['email'])){
+    $session_email = $_SESSION['email'];
+    //perform query to get the user's data from the database
+    $query = "SELECT * ";
+    $query .= "FROM members ";
+    $query .= "WHERE members.email = '{$session_email}'";
+    $query .= $queryParameter;
+
+    $result = mysqli_query($db, $query);
+
+    if (!$result) {
+      die("Database query failed.");
+  }
+
+  while($row = mysqli_fetch_array($result))
+  {
+      $fname = $row['fname'];
+      $lname = $row['lname'];
+      $email = $row['email'];
+  }
+}
+
 ?>
 
 <html lang="en">
@@ -111,5 +138,5 @@ mysqli_free_result($result);
 
 <?php
   // 5. Close database connection
-mysqli_close($connection);
+mysqli_close($db);
 ?>

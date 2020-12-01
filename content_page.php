@@ -2,6 +2,34 @@
 
 include ('server.php'); 
 
+
+// set initial values
+$fname = "";
+$lname = "";
+$email = "";
+$queryParameter = "";
+if(isset($_SESSION['email'])){
+    $session_email = $_SESSION['email'];
+    //perform query to get the user's data from the database
+    $query = "SELECT * ";
+    $query .= "FROM members ";
+    $query .= "WHERE members.email = '{$session_email}'";
+    $query .= $queryParameter;
+
+    $result = mysqli_query($db, $query);
+
+    if (!$result) {
+      die("Database query failed.");
+  }
+
+  while($row = mysqli_fetch_array($result))
+  {
+      $fname = $row['fname'];
+      $lname = $row['lname'];
+      $email = $row['email'];
+  }
+}
+
 ?>
 
 <html lang="en">
@@ -113,7 +141,7 @@ include ('server.php');
 				//PROPERTY.LISTING_ID WILL NEED TO BE PASSED IN
        		$query .= "WHERE property.listing_id = '{$listing_id}'";
 				// $query .= "WHERE 1";
-       		$result = mysqli_query($connection, $query);
+       		$result = mysqli_query($db, $query);
 					//Test if there was a query error
        		if (!$result) {
        			die("Database query failed.");
@@ -232,7 +260,7 @@ include ('server.php');
    $query .= "WHERE agents.agent_ID = property.property_agent_ID ";
    $query .= "AND property.listing_id = '{$listing_id}'";
 				// $query .= "WHERE 1";
-   $result = mysqli_query($connection, $query);
+   $result = mysqli_query($db, $query);
 					//Test if there was a query error
    if (!$result) {
     die("Database query failed.");
@@ -270,5 +298,5 @@ mysqli_free_result($result);
 
 <?php
   // 5. Close database connection
-mysqli_close($connection);
+mysqli_close($db);
 ?>
