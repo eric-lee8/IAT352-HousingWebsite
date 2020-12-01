@@ -6,7 +6,7 @@ include ('server.php');
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "justin_lau";
+$dbname = "justin_lau_v2";
 $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
   // Test if connection succeeded
@@ -17,7 +17,37 @@ if(mysqli_connect_errno()) {
 		" (" . mysqli_connect_errno() . ")"
 	);
 }
+
+// set initial values
+$fname = "";
+$lname = "";
+$email = "";
+$queryParameter = "";
+$session_email = $_SESSION['email'];
+
+        //perform query to get the user's data from the database
+$query = "SELECT * ";
+$query .= "FROM members ";
+$query .= "WHERE members.email = '{$session_email}'";
+$query .= $queryParameter;
+
+$result = mysqli_query($connection, $query);
+
+if (!$result) {
+  die("Database query failed.");
+}
+
+while($row = mysqli_fetch_array($result))
+{
+  $fname = $row['fname'];
+  $lname = $row['lname'];
+  $email = $row['email'];
+}
+
+// close php tag
 ?>
+
+
 
 
 <html lang="en">
@@ -37,8 +67,8 @@ if(mysqli_connect_errno()) {
            <!--  <a href="signup.php">Sign Up</a>
            	<a href="login.php">Log In</a> -->
 
+            <!-- if the user IS NOT LOGGED IN (backup checker) -->
            	<?php if (!isset($_SESSION['email'])) : ?>
-           		<!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
            		<div style="display: flex">
            			<a href="signup.php">Sign Up</a>
            			<a href="login.php">Log In</a>
@@ -48,9 +78,8 @@ if(mysqli_connect_errno()) {
 
            	<!-- if the user logs in print information about them -->
            	<?php if (isset($_SESSION['email'])) : ?>
-           		<!-- <h3>Welcome <strong><?php echo $_SESSION['email']; ?></strong></h3> -->
            		<div style="display: flex">
-           			<p style="color:white">Welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+           			<p style="color:white">Welcome <strong><?php echo $fname; ?></strong></p>
            			<a href="profile.php" style="color:white">Edit Profile</a>
            			<a href="logout.php" style="color:red">Logout</a>
            		</div>
