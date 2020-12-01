@@ -15,7 +15,7 @@ $errors = array();
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "justin_lau_v2";
+$dbname = "justin_lau";
 $db = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 // Test if connection succeeded

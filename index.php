@@ -1,6 +1,6 @@
 <?php
 
-include ('index.php'); 
+include ('header.php'); 
 
 // close php tag
 ?>
@@ -11,48 +11,8 @@ include ('index.php');
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/content_page.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
 </head>
 <body>
-
-    <?php
-            // Credentials
-    define("DB_SERVER", "localhost");
-    define("DB_USER", "root");
-    define("DB_PASS", "");
-    define("DB_NAME", "justin_lau_v2");
-
-            // Creating database connection
-    function db_connect() {
-        $connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
-        return $connection;
-
-                // Test is connection succeeded
-        if(mysqli_connect_erro()) {
-                    // if connection failed, skip the reest of PHP code and print error
-            die("Database connection failed: ". mysqli_connect_error() . " (" . mysqli_connect_errorno() . ")" );
-        }
-    }
-
-            // Disconnecting Database connection
-    function db_disconnect($connection) {
-        if(!isset($connection)) {
-            mysqli_close($connection);
-        }
-    }
-
-            // Query Functions:
-
-            // Get all 
-    function find_all_db() {
-        global $db;
-
-        $sql = "SELECT * FROM property";
-        $result = mysqli_query($db, $sql);
-        return $result;
-    }
-// close php tag
-    ?>
 
     <!-- NAVIGATION BAR -->
     <div class="topnav">
@@ -263,8 +223,6 @@ include ('index.php');
 
                 <?php
 
-                $db = db_connect();
-
                     // PHP code for when the form is submitted as POST
                 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -359,7 +317,7 @@ include ('index.php');
 
                     $send_sql .= ";";
 
-                    $resultTable = mysqli_query($db, $send_sql);
+                    $resultTable = mysqli_query($connection, $send_sql);
 
                     //echo $send_sql;
                     
