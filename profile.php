@@ -12,24 +12,24 @@ $lname = "";
 $email = "";
 $queryParameter = "";
 if(isset($_SESSION['email'])){
-    $session_email = $_SESSION['email'];
+  $session_email = $_SESSION['email'];
     //perform query to get the user's data from the database
-    $query = "SELECT * ";
-    $query .= "FROM members ";
-    $query .= "WHERE members.email = '{$session_email}'";
-    $query .= $queryParameter;
+  $query = "SELECT * ";
+  $query .= "FROM members ";
+  $query .= "WHERE members.email = '{$session_email}'";
+  $query .= $queryParameter;
 
-    $result = mysqli_query($db, $query);
+  $result = mysqli_query($db, $query);
 
-    if (!$result) {
-      die("Database query failed.");
+  if (!$result) {
+    die("Database query failed.");
   }
 
   while($row = mysqli_fetch_array($result))
   {
-      $fname = $row['fname'];
-      $lname = $row['lname'];
-      $email = $row['email'];
+    $fname = $row['fname'];
+    $lname = $row['lname'];
+    $email = $row['email'];
   }
 }
 
@@ -110,17 +110,9 @@ if(isset($_SESSION['email'])){
           <button type="submit" name="edit_profile" class="btn">Save Edits</button>
         </div>
 
-        <?php
-          // detect form submission
-        if (isset($_POST["edit_profile"]))
-          { //if the user hits 'Submit'
-        echo "<p>Profile information updated successfully</p>";
-      }
-      ?>
+  </form>
 
-    </form>
-
-  </div>
+</div>
 
 
 

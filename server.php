@@ -143,7 +143,10 @@ if (isset($_POST['edit_profile'])) {
 		$sql .= "WHERE members.email = '{$_SESSION['email']}'";
 		
 		mysqli_query($db, $sql);
+
 		$_SESSION['email'] = $email;
+		$_SESSION['success'] = "Profile updated successfully";
+
 		header ('location: profile.php');
 	}
 }
