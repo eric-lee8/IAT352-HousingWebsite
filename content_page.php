@@ -191,12 +191,9 @@ while($row = mysqli_fetch_array($result))
        			<!-- if the user is logged in -->
        			<?php if (isset($_SESSION['email'])) : ?>
        				<!-- display a 'Add to Favorites' button -->
-              <li><button onclick="myFunction()" method="post" name="favorite">Add to Favorites</button></li>
-              <!-- <li><button>Add to Favorites</button></li> -->
-
               <form method="post" id="add_to_favorites_form">
                 <div class="input-group">
-                  <button type="submit" name="add_to_favorites">Add to Favorites</button>
+                  <button onclick="myFunction()" type="submit" name="add_to_favorites">Add to Favorites</button>
                 </div>
 
                 <?php

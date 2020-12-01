@@ -70,7 +70,7 @@ if (isset($_POST['register'])) {
 	if (count($errors) == 0) {
 		$encrypt_password = md5($password); // encrypt password before storing in database (security)
 		$sql = "INSERT INTO `members` (`fname`, `lname`, `password`, `email`)
-				VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
+		VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
 		mysqli_query($db, $sql);
 		$_SESSION['email'] = $email;
 		$_SESSION['success'] = "You are now logged in.";
@@ -160,26 +160,26 @@ if (isset($_POST['add_to_favorites'])) {
 	$email = $_SESSION['email'];
 	$listing_id = $_SESSION['listing_id'];
 
-	// if there are no errors, edit information in the database
-	if (count($errors) == 0) {
-		
-		echo "<h1> this is working </h1>";
+	//check db for eisting user with same email
+	$duplicate_check_query = "SELECT * FROM favorited_properties WHERE email = '$email' AND property_listing_id = '$listing_id' LIMIT 1";
+	$result = mysqli_query($db, $duplicate_check_query);
+	$already_favorited = mysqli_fetch_assoc($result);
 
-		// $sql = "INSERT INTO `members` (`fname`, `lname`, `password`, `email`)
-		// 		VALUES ('$first_name', '$last_name', '$encrypt_password', '$email')";
-		
-		// echo $first_name;
-		// echo $last_name;
-		// echo $email;
+	if($already_favorited) {
+		// array_push($errors, "You have already favorited this property!");
+		echo "You already favorited this";
+	}
 
-		$sql = "INSERT INTO `favorited_properties` (`email`, `property_listing_id`)
-				VALUES ('$email', '$listing_id')";
-		mysqli_query($db, $sql);
-		$_SESSION['success'] = "Property successfully added to favorites!";
-
-		// header ('location: profile.php');
+	// if there are no errors, save user to database
+	if(!$already_favorited){
+		if (count($errors) == 0) {
+			$sql = "INSERT INTO `favorited_properties` (`email`, `property_listing_id`)
+			VALUES ('$email', '$listing_id')";
+			mysqli_query($db, $sql);
+		}
 	}
 }
+		
 
 
 
