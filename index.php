@@ -117,9 +117,13 @@ if(isset($_SESSION['email'])){
        <!-- LOGGED IN MEMBERS - DISPLAY FAVORITED LISTINGS -->
        <?php if (isset($_SESSION['email'])) : ?>
        	<?php 
+       	
+       	//reference the favorited_properties
        	$query = "SELECT * ";
-       	$query .= "FROM favorited_properties ";
-       	$query .= "WHERE email = '{$session_email}'";
+       	$query .= "FROM property p ";
+       	$query .= "INNER JOIN ";
+       	$query .= "favorited_properties fp ";
+       	$query .= "WHERE p.listing_id = fp.property_listing_id ";
        	$query .= $queryParameter;
 
        	$result = mysqli_query($db, $query);
@@ -128,12 +132,29 @@ if(isset($_SESSION['email'])){
        		die("Database query failed.");
        	}
 
+       	echo '<h1>Your favorited properties!</h1>';
+       	echo '<div style="width:50%">';
+
        	while($row = mysqli_fetch_array($result))
        	{
        		//display the corresponding property cards
-       		echo $row[1];
-       		echo "<br><br>";
+       		echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
+       		<img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
+       		<div class=\"card-body d-flex flex-column align-items-start\">
+       		<h3 class=\"mb-0\">
+       		<a class=\"text-dark\" href=\"content_page.php?varname=" . $row[0] . "\">$" . $row[7] . "</a>
+       		</h3>
+
+       		<strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
+       		<div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
+       		<p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
+       		<a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
+       		</div>
+       		</div>";
        	}
+
+       	echo "</div>";
+
        	?>
 
        <?php endif ?>
