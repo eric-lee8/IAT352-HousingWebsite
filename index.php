@@ -133,7 +133,7 @@ if(isset($_SESSION['email'])){
        	}
 
        	echo '<h1>Your favorited properties!</h1>';
-       	echo '<div style="width:50%">';
+       	echo '<div style="width:100%;">';
 
        	while($row = mysqli_fetch_array($result))
        	{
@@ -151,6 +151,13 @@ if(isset($_SESSION['email'])){
        		<a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
        		</div>
        		</div>";
+       	}
+
+       	//add an If-check to see if there are no favorited properties
+       	$result = mysqli_query($db, $query);
+       	if(!($row = mysqli_fetch_array($result)))
+       	{
+       		echo '<p>List is empty</p>';
        	}
 
        	echo "</div>";
@@ -180,7 +187,7 @@ if(isset($_SESSION['email'])){
             
         </div> -->
         
-
+        <!-- FILTERING SIDE-MENU -->
         <div class="container">
         	<div class="row">
         		<div class="col-1"></div>
@@ -403,6 +410,7 @@ if(isset($_SESSION['email'])){
                     
                     ?>
 
+                    <!-- DISPLAY THE PROPERTY CARDS -->
 
                     <div class="col-6">
 
@@ -466,5 +474,24 @@ if(isset($_SESSION['email'])){
 
             <?php 
             ?>
-        </body>
-        </html>
+            
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Team: $teamname</p>
+  <p>Justin Lau, Eric Lee, Lucy Huang</p>
+</footer>
+
+<script src="JS/content_page.js"></script>
+
+<?php
+	// 4. Release returned data
+mysqli_free_result($result);
+?>
+
+</body>
+</html>
+
+<?php
+  // 5. Close database connection
+mysqli_close($db);
+?>
