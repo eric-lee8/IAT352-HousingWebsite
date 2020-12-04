@@ -198,7 +198,7 @@ if(isset($_SESSION['email'])){
             <div class="form-group">
               <label for="usr"><b>Search by City:</b></label>
               <input id="searchBar" type="text" class="form-checking" id="usr" onkeyup="show(this.value)">
-              <input type="submit" class="checking" value="Search">
+              <input type="button" class="checking" value="Search">
             </div>
           </form>
           <p><b>Suggestions: </b><span id="txtHint">Surrey, Vancouver, North Vancouver, Burnaby, New Westminster</span></p> 
