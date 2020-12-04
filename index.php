@@ -85,7 +85,7 @@ if(isset($_SESSION['email'])){
           $query .= "favorited_properties fp ";
           $query .= "WHERE '$email' = fp.email ";
           $query .= "AND p.listing_id = fp.property_listing_id ";
-          // $query .= "LIMIT 10 ";
+          $query .= "LIMIT 10 ";
           
           $query .= $queryParameter;
 
