@@ -96,9 +96,8 @@ if(isset($_SESSION['email'])){
           }
 
           echo '<div style="text-align: center";>';
-          echo '<h1>Your favorited properties!</h1>';
+          echo '<h1>Your favorite properties: </h1>';
           echo '</div>';
-          
 
           echo '<div class="container">';
           echo '<div class="row">';
