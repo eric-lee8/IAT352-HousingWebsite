@@ -27,7 +27,6 @@
         </div>
     </div>
 
-
     <div class="header">
         <h2>Register</h2>
     </div>
@@ -35,7 +34,7 @@
     <form method="post" action="signup.php" id="signup">
         <!-- display validation errors here -->
         <?php include('errors.php'); ?>
-        
+
         <div class="input-group">
             <label for="first_name">First Name</label>
             <input type="text" name="first_name" value="<?php echo $first_name; ?>">

@@ -23,7 +23,6 @@
         </div>
     </div>
 
-
     <div class="header">
         <h2>Log In</h2>
     </div>

@@ -43,7 +43,6 @@ if(isset($_SESSION['email'])){
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="CSS/content_page.css">
 	<link rel="stylesheet" href="CSS/signup.css">
-	<link rel="stylesheet" href="CSS/profile_page.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
@@ -83,9 +82,11 @@ if(isset($_SESSION['email'])){
     <div class="profile_table">
 
 
-      <h1>Edit Profile</h1>
-
-      <form method="post" action="profile.php"  id="edit_profile_form">
+      <div class="header">
+        <h2>Edit Profile</h2>
+      </div>
+      
+      <form method="post" action="profile.php"  id="signup">
 
         <?php
         echo "<h2>Welcome " . $fname . "</h2>";
@@ -110,25 +111,19 @@ if(isset($_SESSION['email'])){
           <button type="submit" name="edit_profile" class="btn">Save Edits</button>
         </div>
 
-  </form>
+      </form>
 
-</div>
+    </div>
 
-
-
-
-</body>
-</html>
-
-<?php
+    <?php
   // 4. Release returned data
-mysqli_free_result($result);
-?>
+    mysqli_free_result($result);
+    ?>
 
-</body>
-</html>
+  </body>
+  </html>
 
-<?php
+  <?php
   // 5. Close database connection
-mysqli_close($db);
-?>
+  mysqli_close($db);
+  ?>
