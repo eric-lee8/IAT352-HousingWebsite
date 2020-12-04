@@ -424,7 +424,6 @@ if(isset($_SESSION['email'])){
 </div>
 </div>
 
-?>
 
 </div>
 <div class="col-1"></div>
@@ -441,16 +440,12 @@ if(isset($_SESSION['email'])){
 </div>
 </div>
 
-<?php 
-?>
 
 <!-- FOOTER -->
 <footer class="footer">
  <p>Team: $teamname</p>
  <p>Justin Lau, Eric Lee, Lucy Huang</p>
 </footer>
-
-<script src="JS/content_page.js"></script>
 
 <?php
 	// 4. Release returned data
