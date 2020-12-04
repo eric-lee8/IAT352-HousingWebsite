@@ -95,6 +95,8 @@ if(isset($_SESSION['email'])){
           $query .= "favorited_properties fp ";
           $query .= "WHERE '$email' = fp.email ";
           $query .= "AND p.listing_id = fp.property_listing_id ";
+          $query .= "LIMIT 10 ";
+          
           $query .= $queryParameter;
 
           $result = mysqli_query($db, $query);
@@ -278,7 +280,8 @@ if(isset($_SESSION['email'])){
 <div id="records" class="col-6">
   <?php
                     // Building Query request
-  $send_sql = "SELECT * FROM PROPERTY;";
+  $send_sql = "SELECT * FROM PROPERTY ";
+  $send_sql .= "LIMIT 10 ";
 
   $resultTable = mysqli_query($db, $send_sql);
 
@@ -424,7 +427,6 @@ if(isset($_SESSION['email'])){
 </div>
 </div>
 
-?>
 
 </div>
 <div class="col-1"></div>
