@@ -79,22 +79,14 @@ if(isset($_SESSION['email'])){
           <?php 
           
         //reference the favorited_properties
-        // SELECT * FROM property p INNER JOIN favorited_properties fp, members m WHERE p.listing_id = fp.property_listing_id AND m.email = fp.email 
-
-    // $query = "SELECT * ";
-    // $query .= "FROM property p ";
-    // $query .= "INNER JOIN ";
-    // $query .= "favorited_properties fp, members m ";
-    // $query .= "WHERE '$email' = fp.email ";
-    // $query .= "AND p.listing_id = fp.property_listing_id ";
-    // $query .= $queryParameter;
-
           $query = "SELECT * ";
           $query .= "FROM property p ";
           $query .= "INNER JOIN ";
           $query .= "favorited_properties fp ";
           $query .= "WHERE '$email' = fp.email ";
           $query .= "AND p.listing_id = fp.property_listing_id ";
+          $query .= "LIMIT 10 ";
+          
           $query .= $queryParameter;
 
           $result = mysqli_query($db, $query);
@@ -103,7 +95,12 @@ if(isset($_SESSION['email'])){
             die("Database query failed.");
           }
 
-          echo '<h1>Your favorited properties!</h1>';
+          echo '<div style="text-align: center";>';
+          echo '<h1>Your favorite properties: </h1>';
+          echo '</div>';
+
+          echo '<div class="container">';
+          echo '<div class="row">';
           echo '<div class="col-6">';
 
           if($row = mysqli_fetch_row($result)){
@@ -140,9 +137,13 @@ if(isset($_SESSION['email'])){
 
             }
           } else {
+            echo '<div style="text-align: center;">';
             echo "<h3>No favorited properties yet!</h3>";
+            echo '</div>';
           }
 
+          echo "</div>";
+          echo "</div>";
           echo "</div>";
 
           ?>
@@ -278,7 +279,8 @@ if(isset($_SESSION['email'])){
 <div id="records" class="col-6">
   <?php
                     // Building Query request
-  $send_sql = "SELECT * FROM PROPERTY;";
+  $send_sql = "SELECT * FROM PROPERTY ";
+  // $send_sql .= "LIMIT 10 ";
 
   $resultTable = mysqli_query($db, $send_sql);
 
@@ -424,7 +426,6 @@ if(isset($_SESSION['email'])){
 </div>
 </div>
 
-?>
 
 </div>
 <div class="col-1"></div>
