@@ -32,6 +32,8 @@ if(isset($_SESSION['email'])){
 // close php tag
 ?>
 
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
 <html lang="en">
 <head>
     <title>IAT 352 Home</title>
@@ -110,27 +112,46 @@ if(isset($_SESSION['email'])){
 
 </div>
 
-<br>
-<br>
 
-<!-- Search bar Under construction -->
-<!--    <div class="container">
+<!-- Search bar (AJAX) -->
+    <div class="container">
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-sm-6 bg-white" padding: 1rem;>
                     <div style="padding: 2rem; opacity: 1.0;">
                         <form>
                             <div class="form-group">
-                                <label for="usr">Search by City/Neighbourhood:</label>
-                                <input type="text" class="form-control" id="usr">
+                                <label for="usr"><b>Search by City:</b></label>
+                                <input id="searchBar" type="text" class="form-checking" id="usr" onkeyup="show(this.value)">
+                                <input type="submit" class="checking" value="Search">
                             </div>
                         </form>
+                        <p><b>Suggestions: </b><span id="txtHint">Surrey, Vancouver, North Vancouver, Burnaby, New Westminster</span></p> 
                     </div>
                 </div>
                 <div class="col-3"></div>
             </div>
             
-        </div> -->
+        </div>
+        
+        <!-- Javascript for suggestions -->
+        <script>
+                    function show(str) {
+                    var xhttp;
+                    if (str.length == 0) { 
+                        document.getElementById("txtHint").innerHTML = "Surrey, Vancouver, North Vancouver, Burnaby, New Westminster";
+                        return;
+                    }
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                        }
+                    };
+                    xhttp.open("GET", "gethint.php?q="+str, true);
+                    xhttp.send();   
+                    }
+                </script>
         
 
         <div class="container">
@@ -142,7 +163,6 @@ if(isset($_SESSION['email'])){
                             <nav class="col-md d-none d-md-block bg-light sidebar">
                                 <div class="sidebar-sticky">
 
-
                                     <div class="container-filter">
                                         <br>
                                         <h5>Filter:</h5>
@@ -150,217 +170,59 @@ if(isset($_SESSION['email'])){
 
                                             <h6>Property type:</h6> 
                                             <div class="checkbox">
-                                                <label><input type="checkbox" id="type_house" name="type_house" value="1"> House</label>
-                                                <!-- <label><input type="checkbox" id="type_house" name="type_house" value="<?php echo $type_house; ?>"> House</label> -->
+                                                <label><input type="checkbox" class="checking" id="type_house" name="type_house" value="1"> House</label>
                                             </div>
                                             <div class="checkbox">
-                                                <label><input type="checkbox" id="type_condo" name="type_condo" value="1"> Condo</label>
+                                                <label><input type="checkbox" class="checking" id="type_condo" name="type_condo" value="1"> Condo</label>
                                             </div>
                                             <div class="checkbox">
-                                                <label><input type="checkbox" id="type_townhouse" name="type_townhouse" value="1"> Townhouse</label>
+                                                <label><input type="checkbox" class="checking" id="type_townhouse" name="type_townhouse" value="1"> Townhouse</label>
                                             </div>
 
                                             <h6>Price Range:</h6> 
                                             <div class="checkbox">
-                                                <label><input type="checkbox" id="price_500" name="price_500" value="1"> Under $500k</label>
+                                                <label><input type="checkbox" class="checking" id="price_500" name="price_500" value="1"> Under $500k</label>
                                             </div>
                                             <div class="checkbox">
-                                                <label><input type="checkbox" id="price_1m" name="price_1m" value="1"> $500k - $1mill</label>
+                                                <label><input type="checkbox" class="checking" id="price_1m" name="price_1m" value="1"> $500k - $1mill</label>
                                             </div>
                                             <div class="checkbox">
-                                                <label><input type="checkbox" id="price_1over" name="price_1over" value="1"> Over $1mill</label>
+                                                <label><input type="checkbox" class="checking" id="price_1over" name="price_1over" value="1"> Over $1mill</label>
                                             </div>
-<!--
-                                        <h6>City:</h6> 
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="city_vancouver" name="city_vancouver" value="1"> Vancouver</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="city_burnaby" name="city_burnaby" value="1"> Burnaby</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="city_richmond" name="city_richmond" value="1"> Richmond</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="city_surrey" name="city_surrey" value="1"> Surrey</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" id="city_coquitlam" name="city_coquitlam" value="1"> Coquitlam</label>
-                                        </div>
-                                    -->
-                                    <br>
-                                    <div class="box">
-                                        <div class="container">
-                                            <input type="submit" value="Search">
-                                        </div>
+                                            <br>
+                                            <div class="box">
+                                            </div>
+                                        </form>
                                     </div>
-
-                                </form>
-                            </div>
-
-
-                                    <!-- <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                        <span>Sort by</span>
-                                        <a class="d-flex align-items-center text-muted" href="#">
-                                            <span data-feather="plus-circle"></span>
-                                        </a>
-                                    </h6> -->
-
-
-
-                                    <!-- <ul>
-                                        <div class="dropdown" style ="padding: 1rem">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Property Type
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Houses</a>
-                                                <a class="dropdown-item" href="#">Condos</a>
-                                                <a class="dropdown-item" href="#">Townhouses</a>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="dropdown" style ="padding: 1rem"> 
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Price
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Under $100k</a>
-                                                <a class="dropdown-item" href="#">$100k-$500k</a>
-                                                <a class="dropdown-item" href="#">$500k-$1mill</a>
-                                                <a class="dropdown-item" href="#">Over $1mill</a>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="dropdown" style ="padding: 1rem">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Extra Filters
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">Another action</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
-                                            </div>
-                                        </div>
-
-                                    </ul> -->
                                 </div>
-
                             </nav>
                         </div>  
                     </div>
                 </div>
-
+                <div id="records" class="col-6">
                 <?php
-
-                    // PHP code for when the form is submitted as POST
-                if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-                        // Validate checkboxes and its fields
-                    $type_house = $_POST['type_house'] ?? '0';
-                    $type_condo = $_POST['type_condo'] ?? '0';
-                    $type_townhouse = $_POST['type_townhouse'] ?? '0';
-
-                    $price_500 = $_POST['price_500'] ?? '0';
-                    $price_1m = $_POST['price_1m'] ?? '0';
-                    $price_1over = $_POST['price_1over'] ?? '0';
-
-                        /*
-                        $city_vancouver = $_POST['city_vancouver'] ?? '0';
-                        $city_burnaby = $_POST['city_burnaby'] ?? '0';
-                        $city_richmond = $_POST['city_richmond'] ?? '0';
-                        $city_surrey = $_POST['city_surrey'] ?? '0';
-                        $city_coquitlam = $_POST['city_coquitlam'] ?? '0'; 
-                        */
-                    }
-
-                    $type_house = $_POST['type_house'] ?? '0';
-                    $type_condo = $_POST['type_condo'] ?? '0';
-                    $type_townhouse = $_POST['type_townhouse'] ?? '0';
-
-                    $price_500 = $_POST['price_500'] ?? '0';
-                    $price_1m = $_POST['price_1m'] ?? '0';
-                    $price_1over = $_POST['price_1over'] ?? '0';
-
-
                     // Building Query request
-                    $send_sql = "SELECT * FROM PROPERTY";
-
-
-                    // Including checkbox field
-                    if($type_house == 1 || $type_condo == 1 || $type_townhouse == 1) {
-                        $send_sql .= " WHERE TYPE IN (";
-                        if($type_house == 1) {
-                            $send_sql .= "'House'";
-                            if($type_condo == 1 || $type_townhouse == 1) {
-                                $send_sql .= " , ";
-                            }
-                        }
-                        if($type_condo == 1) {
-                            $send_sql .= " 'Condo' ";
-                            if($type_townhouse == 1) {
-                                $send_sql .= " , ";
-                            }
-                        }
-                        if($type_townhouse == 1) {
-                            $send_sql .= " 'Townhouse' ";
-                        }
-                        $send_sql .= ")";
-                    }
-
-                    if($price_500 == 1 || $price_1m == 1 || $price_1over == 1) {
-
-                        if($price_500 == 1 && $price_1m == 1 && $price_1over == 1) {
-
-                        } else {
-                            if($type_house == 1 || $type_condo == 1 || $type_townhouse == 1) {
-                                $send_sql .= " AND (PRICE";
-                            } else {
-                                $send_sql .= " WHERE (PRICE";
-                            }
-
-                            if($price_500 == 1 && $price_1m == 0 && $price_1over == 0) {
-                                $send_sql .= " < 500000)";
-                            }
-
-                            if($price_500 == 0 && $price_1m == 1 && $price_1over == 0) {
-                                $send_sql .= " >= 500000 && PRICE <= 1000000)";
-                            }
-
-                            if($price_500 == 0 && $price_1m == 0 && $price_1over == 1) {
-                                $send_sql .= " > 1000000)";
-                            }
-
-                            if($price_500 == 1 && $price_1m == 1 && $price_1over == 0) {
-                                $send_sql .= " < 1000000)";
-                            }
-                            if($price_500 == 0 && $price_1m == 1 && $price_1over == 1) {
-                                $send_sql .= " > 500000)";
-                            }
-                            if($price_500 == 1 && $price_1m == 0 && $price_1over == 1) {
-                                $send_sql .= " < 500000 || > 1000000)";
-                            }
-
-                        }
-
-                    }
-
-                    $send_sql .= ";";
+                    $send_sql = "SELECT * FROM PROPERTY;";
 
                     $resultTable = mysqli_query($db, $send_sql);
 
-                    //echo $send_sql;
-                    
-                    ?>
+                    if($row = mysqli_fetch_row($resultTable)){
+                        echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
+                        <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
+                        <div class=\"card-body d-flex flex-column align-items-start\">
+                        <h3 class=\"mb-0\">
+                        <a class=\"text-dark\" href=\"content_page.php?varname=" . $row[0] . "\">$" . $row[7] . "</a>
+                        </h3>
 
+                        <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
+                        <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
+                        <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
+                        <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
+                        </div>
+                        </div>";
+                        
 
-                    <div class="col-6">
-
-                        <?php
-
-                        if($row = mysqli_fetch_row($resultTable)){
+                        while($row = mysqli_fetch_row($resultTable)) {
                             echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
                             <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
                             <div class=\"card-body d-flex flex-column align-items-start\">
@@ -372,36 +234,116 @@ if(isset($_SESSION['email'])){
                             <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
                             <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
                             <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
+
                             </div>
                             </div>";
                             
-
-                            while($row = mysqli_fetch_row($resultTable)) {
-                                echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
-                                <img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
-                                <div class=\"card-body d-flex flex-column align-items-start\">
-                                <h3 class=\"mb-0\">
-                                <a class=\"text-dark\" href=\"content_page.php?varname=" . $row[0] . "\">$" . $row[7] . "</a>
-                                </h3>
-
-                                <strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
-                                <div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
-                                <p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
-                                <a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
-
-                                </div>
-                                </div>";
-                                
-                            }
-                        } else {
-                           echo "<h3>No Results</h3>";
-                       }
+                        }
+                    } else {
+                       echo "<h3>No Results</h3>";
+                   }
+                    
+                ?>
 
 
+                </div>
 
-                       ?>
+                <script type="text/javascript"> 
 
-                   </div>
+                    $(function(){ 
+
+                    $(".checking").on('click', function(){ 
+                        
+                        var type_house = 1;
+                        if (document.getElementById('type_house').checked) 
+                        {
+                            type_house = 1;
+                        } else type_house = 0;
+
+                        var type_condo = 0;
+                        if (document.getElementById('type_condo').checked) 
+                        {
+                            type_condo = 1;
+                        } else type_condo = 0;
+
+                        var type_townhouse = 1;
+                        if (document.getElementById('type_townhouse').checked) 
+                        {
+                            type_townhouse = 1;
+                        } else type_townhouse = 0;
+
+                        var price_500 = 0;
+                        if (document.getElementById('price_500').checked) 
+                        {
+                            price_500 = 1;
+                        } else price_500 = 0;
+
+                        var price_1m = 1;
+                        if (document.getElementById('price_1m').checked) 
+                        {
+                            price_1m = 1;
+                        } else price_1m = 0;
+
+                        var price_1over = 0;
+                        if (document.getElementById('price_1over').checked) 
+                        {
+                            price_1over = 1;
+                        } else price_1over = 0;
+
+                        var searchVal = document.getElementById("searchBar").value;
+                        if(searchVal == "")
+                        {
+                            searchVal = null;
+                        }
+
+                        console.log(searchVal);
+
+                    $.ajax({ 
+
+                        method: "GET", 
+                        
+                        url: "getrecords_ajax.php",
+
+                        data: {type_house:type_house, type_condo: type_condo, type_townhouse:type_townhouse, price_500: price_500, price_1m: price_1m, price_1over: price_1over, searchVal: searchVal}
+
+                    }).done(function( data ) { 
+
+                        console.log(data);
+
+                        var result= $.parseJSON(data); 
+
+                        var string='';
+
+                        if(result == null)
+                        {
+                            string += "<h3>No Results</h3>";
+                        }
+
+                        
+                
+                    /* from result create a string of data and append to the div */
+                    
+                        $.each( result, function( key, value ) { 
+                        
+                        string += "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">\
+                            <img class=\"card-img-left d-none d-md-block\" src=\"Images/" + value['listing_id'] + "/" + value['listing_id'] + "_1.jpg\" alt=\"Card image cap\" width=\"40%\">\
+                            <div class=\"card-body d-flex flex-column align-items-start\">\
+                            <h3 class=\"mb-0\">\
+                            <a class=\"text-dark\" href=\"content_page.php?varname=" + value['listing_id'] + "\">$" + value['price'] + "</a> </h3>\
+                            <strong class=\"d-inline-block mb-2 text-primary\">" + value['city'] + ", " + value['address'] + "</strong>\
+                            <div class=\"mb-1 text-muted\">" + value['beds'] + " BED | " + value['baths'] + " BATH</div>\
+                            <p class=\"card-text mb-auto\">" + value['sqft'] + " SQFT | " + value['type'] + "</p>\
+                            <a href=\"content_page.php?varname=" + value['listing_id'] + "\">View Listing</a>\
+                            </div>\
+                            </div>" 
+                            }); 
+
+                        $("#records").html(string); 
+                    }); 
+                    }); 
+                }); 
+                </script> 
+
                    <div class="col-1"></div>
                </div>
            </div>
