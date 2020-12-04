@@ -450,8 +450,6 @@ if(isset($_SESSION['email'])){
  <p>Justin Lau, Eric Lee, Lucy Huang</p>
 </footer>
 
-<script src="JS/content_page.js"></script>
-
 <?php
 	// 4. Release returned data
 mysqli_free_result($result);
