@@ -164,7 +164,7 @@ if(isset($_SESSION['email'])){
 
     <!-- ALERT MESSAGE FOR FAVORITING -->
     <script>
-     function alertMessage() {
+     function alertMessageAdd() {
       alert("Listing has been added to your favorites!");
       
       //https://stackoverflow.com/questions/10671174/changing-button-text-onclick
@@ -172,44 +172,65 @@ if(isset($_SESSION['email'])){
       // if (elem.value=="Add to Favorites") elem.value = "Remove from Favorites";
       // else elem.value = "Add to Favorites";
     }
+
+    function alertMessageRemove() {
+      alert("Listing has been removed from your favorites!");
+    }
   </script>
 
   <!-- if the user is logged in -->
   <?php if (isset($_SESSION['email'])) : ?>
-      <?php 
-      
-      //reference the favorited_properties
-      $query = "SELECT * ";
-      $query .= "FROM property p ";
-      $query .= "INNER JOIN ";
-      $query .= "favorited_properties fp ";
-      $query .= "WHERE p.listing_id = fp.property_listing_id ";
-      $query .= $queryParameter;
+    <?php 
 
-      $result = mysqli_query($db, $query);
+    $query = "SELECT * ";
+    $query .= "FROM favorited_properties ";
+    $query .= "WHERE property_listing_id = '$listing_id' ";
+    $query .= $queryParameter;
 
-      if (!$result) {
-        die("Database query failed.");
-      }
+    $result = mysqli_query($db, $query);
 
-      ?>
+    if (!$result) {
+      die("Database query failed.");
+    }
 
-
-
-     <!-- display a 'Add to Favorites' button -->
-     <form method="post" id="add_to_favorites_form">
+    //if the listing id they are viewing matches a listing id in their favorited list
+    //show a "Remove from favorites" button
+    if($row = mysqli_fetch_row($result))
+    {
+      echo '<form method="post" id="add_to_favorites_form">
       <div class="input-group">
-        <button onclick="alertMessage()" type="submit" name="add_to_favorites" id="favorites_button">Add to Favorites</button>
-      </div>
+      <button onclick="alertMessageRemove()" type="submit" name="add_to_favorites" id="favorites_button">Remove from Favorites</button>
+      </div>';
 
-      <?php
       $_GET['varname'] = $listing_id;
-      ?>
 
-    </form>
+      echo '</form>';
+    } else {
+      echo '<form method="post" id="add_to_favorites_form">
+      <div class="input-group">
+      <button onclick="alertMessageAdd()" type="submit" name="add_to_favorites" id="favorites_button">Add to Favorites</button>
+      </div>';
+
+      $_GET['varname'] = $listing_id;
+    }
+
+    ?>
 
 
-<?php endif ?>
+    <!-- display a 'Add to Favorites' button -->
+    <!-- <form method="post" id="add_to_favorites_form"> -->
+      <!-- <div class="input-group"> -->
+        <!-- <button onclick="alertMessage()" type="submit" name="add_to_favorites" id="favorites_button">Add to Favorites</button> -->
+      <!-- </div> -->
+
+      
+      <!-- // $_GET['varname'] = $listing_id; -->
+      <!-- ?> -->
+
+    <!-- </form> -->
+
+
+  <?php endif ?>
 </ul>
 </div>
 </div>
