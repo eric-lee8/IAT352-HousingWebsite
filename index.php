@@ -453,7 +453,7 @@ if(isset($_SESSION['email'])){
 
 <?php
 	// 4. Release returned data
-mysqli_free_result($result);
+mysqli_free_result($resultTable);
 ?>
 
 </body>
