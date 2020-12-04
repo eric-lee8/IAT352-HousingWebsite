@@ -89,15 +89,22 @@ if ($conn->connect_error) {
     }
 
     if($city_val != null) {
+        if($type_house == 1 || $type_condo == 1 || $type_townhouse == 1 || $type_house == 1 || $type_condo == 1 || $type_townhouse == 1){
         $city_val = strtolower($city_val);
-        $send_sql .= " AND (CITY IS $city_val)";
+        $send_sql .= " AND (CITY = '$city_val')";
+        } else  {
+            $city_val = strtolower($city_val);
+            $send_sql .= " WHERE (CITY = '$city_val')";
+        }
     }
 
-   // echo "console.log($send_sql);";
+   //echo "console.log($send_sql);";
 
     $result = $conn->query($send_sql);
     /* If there are results from database push to result array */
     
+    //echo "console.log($result);";
+
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             array_push($result_array, $row);
