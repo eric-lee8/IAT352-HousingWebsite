@@ -162,7 +162,6 @@ if(isset($_SESSION['email'])){
   <div class="main_info_right">
    <ul>
 
-
     <!-- ALERT MESSAGE FOR FAVORITING -->
     <script>
      function alertMessage() {
@@ -177,21 +176,37 @@ if(isset($_SESSION['email'])){
 
   <!-- if the user is logged in -->
   <?php if (isset($_SESSION['email'])) : ?>
-   <!-- display a 'Add to Favorites' button -->
-   <form method="post" id="add_to_favorites_form">
-    <div class="input-group">
-      <button onclick="alertMessage()" type="submit" name="add_to_favorites" id="favorites_button">Add to Favorites</button>
-    </div>
+      <?php 
+      
+      //reference the favorited_properties
+      $query = "SELECT * ";
+      $query .= "FROM property p ";
+      $query .= "INNER JOIN ";
+      $query .= "favorited_properties fp ";
+      $query .= "WHERE p.listing_id = fp.property_listing_id ";
+      $query .= $queryParameter;
 
-    <?php
-    $_GET['varname'] = $listing_id;
-    ?>
+      $result = mysqli_query($db, $query);
 
-  </form>
+      if (!$result) {
+        die("Database query failed.");
+      }
+
+      ?>
 
 
 
+     <!-- display a 'Add to Favorites' button -->
+     <form method="post" id="add_to_favorites_form">
+      <div class="input-group">
+        <button onclick="alertMessage()" type="submit" name="add_to_favorites" id="favorites_button">Add to Favorites</button>
+      </div>
 
+      <?php
+      $_GET['varname'] = $listing_id;
+      ?>
+
+    </form>
 
 
 <?php endif ?>

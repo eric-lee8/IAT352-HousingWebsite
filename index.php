@@ -119,11 +119,14 @@ if(isset($_SESSION['email'])){
        	<?php 
        	
        	//reference the favorited_properties
+       	// SELECT * FROM property p INNER JOIN favorited_properties fp, members m WHERE p.listing_id = fp.property_listing_id AND m.email = fp.email 
+
        	$query = "SELECT * ";
        	$query .= "FROM property p ";
        	$query .= "INNER JOIN ";
-       	$query .= "favorited_properties fp ";
+       	$query .= "favorited_properties fp, members m ";
        	$query .= "WHERE p.listing_id = fp.property_listing_id ";
+       	$query .= "AND '$email' = fp.email ";
        	$query .= $queryParameter;
 
        	$result = mysqli_query($db, $query);
@@ -133,11 +136,11 @@ if(isset($_SESSION['email'])){
        	}
 
        	echo '<h1>Your favorited properties!</h1>';
-       	echo '<div style="width:100%;">';
+       	echo '<div class="col-6">';
 
-       	while($row = mysqli_fetch_array($result))
-       	{
-       		//display the corresponding property cards
+
+
+       	if($row = mysqli_fetch_row($result)){
        		echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
        		<img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
        		<div class=\"card-body d-flex flex-column align-items-start\">
@@ -151,13 +154,27 @@ if(isset($_SESSION['email'])){
        		<a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
        		</div>
        		</div>";
-       	}
 
-       	//add an If-check to see if there are no favorited properties
-       	$result = mysqli_query($db, $query);
-       	if(!($row = mysqli_fetch_array($result)))
-       	{
-       		echo '<p>List is empty</p>';
+
+       		while($row = mysqli_fetch_row($result)) {
+       			echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
+       			<img class=\"card-img-left d-none d-md-block\" src=\"Images/" . $row[0] . "/" . $row[0] . "_1.jpg\" alt=\"Card image cap\" width=\"40%\">
+       			<div class=\"card-body d-flex flex-column align-items-start\">
+       			<h3 class=\"mb-0\">
+       			<a class=\"text-dark\" href=\"content_page.php?varname=" . $row[0] . "\">$" . $row[7] . "</a>
+       			</h3>
+
+       			<strong class=\"d-inline-block mb-2 text-primary\">" . $row[5] . ", " . $row[6] . "</strong>
+       			<div class=\"mb-1 text-muted\">" . $row[1] . " BED | " . $row[2] . " BATH</div>
+       			<p class=\"card-text mb-auto\">" . $row[3] . " SQFT | " . $row[8]. "</p>
+       			<a href=\"content_page.php?varname=" . $row[0] . "\">View Listing</a>
+
+       			</div>
+       			</div>";
+
+       		}
+       	} else {
+       		echo "<h3>No favorited properties yet!</h3>";
        	}
 
        	echo "</div>";
@@ -474,24 +491,24 @@ if(isset($_SESSION['email'])){
 
             <?php 
             ?>
-            
-<!-- FOOTER -->
-<footer class="footer">
-  <p>Team: $teamname</p>
-  <p>Justin Lau, Eric Lee, Lucy Huang</p>
-</footer>
 
-<script src="JS/content_page.js"></script>
+            <!-- FOOTER -->
+            <footer class="footer">
+            	<p>Team: $teamname</p>
+            	<p>Justin Lau, Eric Lee, Lucy Huang</p>
+            </footer>
 
-<?php
+            <script src="JS/content_page.js"></script>
+
+            <?php
 	// 4. Release returned data
-mysqli_free_result($result);
-?>
+            mysqli_free_result($result);
+            ?>
 
-</body>
-</html>
+        </body>
+        </html>
 
-<?php
+        <?php
   // 5. Close database connection
-mysqli_close($db);
-?>
+        mysqli_close($db);
+        ?>
