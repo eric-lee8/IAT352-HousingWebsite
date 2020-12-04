@@ -95,7 +95,9 @@ if(isset($_SESSION['email'])){
             die("Database query failed.");
           }
 
+          echo '<div style="text-align: center";>';
           echo '<h1>Your favorited properties!</h1>';
+          echo '</div>';
           echo '<div class="col-6">';
 
           if($row = mysqli_fetch_row($result)){
@@ -132,7 +134,9 @@ if(isset($_SESSION['email'])){
 
             }
           } else {
+            echo '<div style="text-align: center";>';
             echo "<h3>No favorited properties yet!</h3>";
+            echo '</div>';
           }
 
           echo "</div>";
