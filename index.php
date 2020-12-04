@@ -210,7 +210,7 @@ if(isset($_SESSION['email'])){
     
   </div>
   
-  <!-- FILTERING SIDE-MENU -->
+  
   <!-- Javascript for suggestions -->
   <script>
     function show(str) {
@@ -230,7 +230,7 @@ if(isset($_SESSION['email'])){
     }
   </script>
   
-
+<!-- FILTERING SIDE-MENU -->
   <div class="container">
    <div class="row">
     <div class="col-1"></div>
