@@ -98,6 +98,10 @@ if(isset($_SESSION['email'])){
           echo '<div style="text-align: center";>';
           echo '<h1>Your favorited properties!</h1>';
           echo '</div>';
+          
+
+          echo '<div class="container">';
+          echo '<div class="row">';
           echo '<div class="col-6">';
 
           if($row = mysqli_fetch_row($result)){
@@ -134,11 +138,13 @@ if(isset($_SESSION['email'])){
 
             }
           } else {
-            echo '<div style="text-align: center";>';
+            echo '<div style="text-align: center;">';
             echo "<h3>No favorited properties yet!</h3>";
             echo '</div>';
           }
 
+          echo "</div>";
+          echo "</div>";
           echo "</div>";
 
           ?>
@@ -275,7 +281,7 @@ if(isset($_SESSION['email'])){
   <?php
                     // Building Query request
   $send_sql = "SELECT * FROM PROPERTY ";
-  $send_sql .= "LIMIT 10 ";
+  // $send_sql .= "LIMIT 10 ";
 
   $resultTable = mysqli_query($db, $send_sql);
 
