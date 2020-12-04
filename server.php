@@ -170,12 +170,15 @@ if (isset($_POST['add_to_favorites'])) {
 
 	if($already_favorited) {
 		// array_push($errors, "You have already favorited this property!");
-		echo "You already favorited this";
+		// echo "Deleted from favorites";
+		$sql = "DELETE FROM `favorited_properties` WHERE property_listing_id = '$listing_id'";
+			mysqli_query($db, $sql);
 	}
 
 	// if there are no errors, save user to database
 	if(!$already_favorited){
 		if (count($errors) == 0) {
+			// echo "Added to favorites";
 			$sql = "INSERT INTO `favorited_properties` (`email`, `property_listing_id`)
 			VALUES ('$email', '$listing_id')";
 			mysqli_query($db, $sql);
