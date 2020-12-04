@@ -79,16 +79,6 @@ if(isset($_SESSION['email'])){
           <?php 
           
         //reference the favorited_properties
-        // SELECT * FROM property p INNER JOIN favorited_properties fp, members m WHERE p.listing_id = fp.property_listing_id AND m.email = fp.email 
-
-    // $query = "SELECT * ";
-    // $query .= "FROM property p ";
-    // $query .= "INNER JOIN ";
-    // $query .= "favorited_properties fp, members m ";
-    // $query .= "WHERE '$email' = fp.email ";
-    // $query .= "AND p.listing_id = fp.property_listing_id ";
-    // $query .= $queryParameter;
-
           $query = "SELECT * ";
           $query .= "FROM property p ";
           $query .= "INNER JOIN ";
