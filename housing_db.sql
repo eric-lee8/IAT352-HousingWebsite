@@ -90,7 +90,7 @@ INSERT INTO `property` (`listing_id`, `beds`, `baths`, `sqft`, `date_listed`, `c
 ('R2521169', 2, 1, 756, 'Nov 30 2020', 'New Westminster', '802 - 988 QUAYSIDE DR', 608000, 'Condo', 8749),
 ('R2521070', 2, 2, 1245, 'Nov 30 2020', 'New Westminster', '1104 - 98 10 ST', 639000, 'Condo', 8749),
 
-('R2517245', 1, 1, 607, 'Nov 12 2020', 'North Vancouver', '101 - 210 W 13 ST', 530000, 'Condo', 3041),
+('R2517290', 1, 1, 607, 'Nov 12 2020', 'North Vancouver', '101 - 210 W 13 ST', 530000, 'Condo', 3041),
 ('R2521467', 2, 2, 849, 'Dec 02 2020', 'North Vancouver', '301 - 177 3 ST W', 849900, 'Condo', 3041),
 ('R2521157', 2, 2, 1205, 'Nov 30 2020', 'North Vancouver', 'TH4 1288 CHESTERFIELD AVENUE', 869000, 'Townhouse', 3041),
 ('R2521018', 3, 2, 1378, 'Nov 30 2020', 'North Vancouver', '2005 - 188 ESPLANADE E', 2199000, 'Condo', 3041),
