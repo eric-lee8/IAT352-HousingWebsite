@@ -5,7 +5,7 @@ $a[] = "Surrey";
 $a[] = "Vancouver";
 $a[] = "Burnaby";
 $a[] = "North Vancouver";
-$a[] = "New Westminister";
+$a[] = "New Westminster";
 
 // get the q parameter from URL
 $q = $_REQUEST["q"];
