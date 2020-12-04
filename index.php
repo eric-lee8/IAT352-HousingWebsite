@@ -121,12 +121,28 @@ if(isset($_SESSION['email'])){
        	//reference the favorited_properties
        	// SELECT * FROM property p INNER JOIN favorited_properties fp, members m WHERE p.listing_id = fp.property_listing_id AND m.email = fp.email 
 
-       	$query = "SELECT * ";
-       	$query .= "FROM property p ";
-       	$query .= "INNER JOIN ";
-       	$query .= "favorited_properties fp, members m ";
-       	$query .= "WHERE p.listing_id = fp.property_listing_id ";
-       	$query .= "AND '$email' = fp.email ";
+		// $query = "SELECT * ";
+		// $query .= "FROM property p ";
+		// $query .= "INNER JOIN ";
+		// $query .= "favorited_properties fp, members m ";
+		// $query .= "WHERE '$email' = fp.email ";
+		// $query .= "AND p.listing_id = fp.property_listing_id ";
+		// $query .= $queryParameter;
+
+
+       	/*
+		SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+		FROM ((Orders
+		INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+		INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID); 
+       	*/
+
+		$query = "SELECT * ";
+       	$query .= "FROM ((property ";
+       	$query .= "INNER JOIN favorited_properties ";
+       	$query .= "ON property.listing_id = favorited_properties.property_listing_id) ";
+       	$query .= "INNER JOIN members ";
+       	$query .= "ON members.email = '$email') ";
        	$query .= $queryParameter;
 
        	$result = mysqli_query($db, $query);
@@ -137,8 +153,6 @@ if(isset($_SESSION['email'])){
 
        	echo '<h1>Your favorited properties!</h1>';
        	echo '<div class="col-6">';
-
-
 
        	// if($row = mysqli_fetch_row($result)){
        	// 	echo "<div class=\"card flex-md-row mb-4 box-shadow h-md-250\">
