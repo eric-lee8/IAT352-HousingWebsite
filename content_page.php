@@ -9,24 +9,24 @@ $lname = "";
 $email = "";
 $queryParameter = "";
 if(isset($_SESSION['email'])){
-    $session_email = $_SESSION['email'];
+  $session_email = $_SESSION['email'];
     //perform query to get the user's data from the database
-    $query = "SELECT * ";
-    $query .= "FROM members ";
-    $query .= "WHERE members.email = '{$session_email}'";
-    $query .= $queryParameter;
+  $query = "SELECT * ";
+  $query .= "FROM members ";
+  $query .= "WHERE members.email = '{$session_email}'";
+  $query .= $queryParameter;
 
-    $result = mysqli_query($db, $query);
+  $result = mysqli_query($db, $query);
 
-    if (!$result) {
-      die("Database query failed.");
+  if (!$result) {
+    die("Database query failed.");
   }
 
   while($row = mysqli_fetch_array($result))
   {
-      $fname = $row['fname'];
-      $lname = $row['lname'];
-      $email = $row['email'];
+    $fname = $row['fname'];
+    $lname = $row['lname'];
+    $email = $row['email'];
   }
 }
 
@@ -50,188 +50,230 @@ if(isset($_SESSION['email'])){
            	<a href="login.php">Log In</a> -->
 
             <!-- if the user IS NOT LOGGED IN (backup checker) -->
-           	<?php if (!isset($_SESSION['email'])) : ?>
-           		<div style="display: flex">
-           			<a href="signup.php">Sign Up</a>
-           			<a href="login.php">Log In</a>
-           		</div>
+            <?php if (!isset($_SESSION['email'])) : ?>
+             <div style="display: flex">
+              <a href="signup.php">Sign Up</a>
+              <a href="login.php">Log In</a>
+            </div>
 
-           	<?php endif ?>
+          <?php endif ?>
 
-           	<!-- if the user logs in print information about them -->
-           	<?php if (isset($_SESSION['email'])) : ?>
-           		<div style="display: flex">
-           			<p style="color:white">Welcome <strong><?php echo $fname; ?></strong></p>
-           			<a href="profile.php" style="color:white">Edit Profile</a>
-           			<a href="logout.php" style="color:red">Logout</a>
-           		</div>
+          <!-- if the user logs in print information about them -->
+          <?php if (isset($_SESSION['email'])) : ?>
+           <div style="display: flex">
+            <p style="color:white">Welcome <strong><?php echo $fname; ?></strong></p>
+            <a href="profile.php" style="color:white">Edit Profile</a>
+            <a href="logout.php" style="color:red">Logout</a>
+          </div>
 
-           	<?php endif ?>
-           </div>
-         </div>
+        <?php endif ?>
+      </div>
+    </div>
 
-         <!-- IMAGES SECTION -->
-         <div class="images_section center">
-          <div class="main_image">
+    <!-- IMAGES SECTION -->
+    <div class="images_section center">
+      <div class="main_image">
 
 
-           <?php
+       <?php
 
 			//$LISTING_ID WILL NEED TO TAKE IN THE INPUT FROM THE HOME SCREEN
-           $listing_id = '';
-           $listing_id = $_GET['varname'];
-           $_SESSION['listing_id'] = $listing_id;
+       $listing_id = '';
+       $listing_id = $_GET['varname'];
+       $_SESSION['listing_id'] = $listing_id;
 			// $listing_id = "R2515566";
 
 			//test
-           $file_path = "Images/";
-           $file_path .= "{$listing_id}/";
-           $file_path .= "{$listing_id}_1.jpg";
+       $file_path = "Images/";
+       $file_path .= "{$listing_id}/";
+       $file_path .= "{$listing_id}_1.jpg";
 
 			// '{$listing_id}'
 
 			// \Images\R2515047
 
-           echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
-           ?>
+       echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
+       ?>
 
-           <!-- HTML CODE -->
-           <!-- <a href= Images/house_1.jpg target="blank"><img src="Images/house_1.jpg" alt="House 1"></a> -->
+       <!-- HTML CODE -->
+       <!-- <a href= Images/house_1.jpg target="blank"><img src="Images/house_1.jpg" alt="House 1"></a> -->
 
-         </div>
+     </div>
 
-         <div class="side_image">
+     <div class="side_image">
 
-           <?php
+       <?php
 
-           $file_path = "Images/";
-           $file_path .= "{$listing_id}/";
-           $file_path .= "{$listing_id}_2.jpg";
+       $file_path = "Images/";
+       $file_path .= "{$listing_id}/";
+       $file_path .= "{$listing_id}_2.jpg";
 
-           echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
+       echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
 
-           $file_path = "Images/";
-           $file_path .= "{$listing_id}/";
-           $file_path .= "{$listing_id}_3.jpg";
-           echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
+       $file_path = "Images/";
+       $file_path .= "{$listing_id}/";
+       $file_path .= "{$listing_id}_3.jpg";
+       echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
 
-           $file_path = "Images/";
-           $file_path .= "{$listing_id}/";
-           $file_path .= "{$listing_id}_4.jpg";
-           echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
-           ?>
-
-
-           <!-- HTML CODE -->
-           <!-- <a href= Images/house_2.jpg target="blank"><img src="Images/house_2.jpg" alt="House 2"></a> -->
-           <!-- <a href= Images/house_3.jpg target="blank"><img src="Images/house_3.jpg" alt="House 3"></a> -->
-           <!-- <a href= Images/house_4.jpg target="blank"><img src="Images/house_4.jpg" alt="House 4"></a> -->
-         </div>
-       </div>
+       $file_path = "Images/";
+       $file_path .= "{$listing_id}/";
+       $file_path .= "{$listing_id}_4.jpg";
+       echo "<a href=" . $file_path . " target=\"blank\">" . "<img src=\"".$file_path."\" alt=\"error\"></a>";
+       ?>
 
 
-       <!-- MAIN INFORMATION -->
-       <div class="main_info center">
-       	<div class="main_info_left">
+       <!-- HTML CODE -->
+       <!-- <a href= Images/house_2.jpg target="blank"><img src="Images/house_2.jpg" alt="House 2"></a> -->
+       <!-- <a href= Images/house_3.jpg target="blank"><img src="Images/house_3.jpg" alt="House 3"></a> -->
+       <!-- <a href= Images/house_4.jpg target="blank"><img src="Images/house_4.jpg" alt="House 4"></a> -->
+     </div>
+   </div>
 
-       		<?php 
+
+   <!-- MAIN INFORMATION -->
+   <div class="main_info center">
+    <div class="main_info_left">
+
+     <?php 
 					//2. Perform database query
-       		$query  = "SELECT * ";
-       		$query .= "FROM property ";
+     $query  = "SELECT * ";
+     $query .= "FROM property ";
 				//PROPERTY.LISTING_ID WILL NEED TO BE PASSED IN
-       		$query .= "WHERE property.listing_id = '{$listing_id}'";
+     $query .= "WHERE property.listing_id = '{$listing_id}'";
 				// $query .= "WHERE 1";
-       		$result = mysqli_query($db, $query);
+     $result = mysqli_query($db, $query);
 					//Test if there was a query error
-       		if (!$result) {
-       			die("Database query failed.");
-       		}
-       		?>
+     if (!$result) {
+      die("Database query failed.");
+    }
+    ?>
 
-       		<?php
+    <?php
 				//3. Display all of the orderNumbers as options
-       		while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
 					// grabs the orderNumber row from the database
-       			echo "<h2>$" .$row['price']. "</h2>";
-       			echo "<h4>" .$row['address'] . " | " . $row['city'] . "</h4>";
-       			echo "<h4>" .$row['baths'] . " baths | " . $row['beds'] . " beds</h4>";
-       			echo "<h4>" .$row['sqft'] . " SQFT | " .$row['type'] . "</h4>";
-       		}
-       		?>
-       	</div>
-       	<div class="main_info_right">
-       		<ul>
-
-
-       			<!-- ALERT MESSAGE FOR FAVORITING -->
-       			<script>
-       				function myFunction() {
-       					alert("Listing has been added to your favorites!");
-       				}
-       			</script>
-
-       			<!-- if the user is logged in -->
-       			<?php if (isset($_SESSION['email'])) : ?>
-       				<!-- display a 'Add to Favorites' button -->
-              <form method="post" id="add_to_favorites_form">
-                <div class="input-group">
-                  <button onclick="myFunction()" type="submit" name="add_to_favorites">Add to Favorites</button>
-                </div>
-
-                <?php
-                  $_GET['varname'] = $listing_id;
-                ?>
-
-              </form>
-
-
-
-
-
-
-            <?php endif ?>
-          </ul>
-        </div>
-      </div>
-
-
-      <!-- DETAILS + INSIDE + OUTSIDE -->
-      <div class="details_container center">
-        <div class="details">
-         <h2>DETAILS</h2>
-         <ul>
-          <li>Property Type: Single Family</li>
-          <li>Property Tax: $5,396 (2020)</li>
-          <li>Last Updated: Wed, October 07, 2020</li>
-          <li>Location: Urban</li>
-          <li>Property Subtype: Freehold</li>
-          <li>MLS® #: H4090358</li>
-        </ul>
-      </div>
-
-      <div class="inside">
-       <h2>INSIDE</h2>
-       <ul>
-        <li>Property Type: Single Family</li>
-        <li>Property Tax: $5,396 (2020)</li>
-        <li>Last Updated: Wed, October 07, 2020</li>
-        <li>Location: Urban</li>
-        <li>Property Subtype: Freehold</li>
-        <li>MLS® #: H4090358</li>
-      </ul>
-    </div>
-
-    <div class="outside">
-     <h2>OUTSIDE</h2>
-     <ul>
-      <li>Property Type: Single Family</li>
-      <li>Property Tax: $5,396 (2020)</li>
-      <li>Last Updated: Wed, October 07, 2020</li>
-      <li>Location: Urban</li>
-      <li>Property Subtype: Freehold</li>
-      <li>MLS® #: H4090358</li>
-    </ul>
+      echo "<h2>$" .$row['price']. "</h2>";
+      echo "<h4>" .$row['address'] . " | " . $row['city'] . "</h4>";
+      echo "<h4>" .$row['baths'] . " baths | " . $row['beds'] . " beds</h4>";
+      echo "<h4>" .$row['sqft'] . " SQFT | " .$row['type'] . "</h4>";
+    }
+    ?>
   </div>
+  <div class="main_info_right">
+   <ul>
+
+    <!-- ALERT MESSAGE FOR FAVORITING -->
+    <script>
+     function alertMessageAdd() {
+      alert("Listing has been added to your favorites!");
+      
+      //https://stackoverflow.com/questions/10671174/changing-button-text-onclick
+      // var elem = document.getElementById("favorites_button");
+      // if (elem.value=="Add to Favorites") elem.value = "Remove from Favorites";
+      // else elem.value = "Add to Favorites";
+    }
+
+    function alertMessageRemove() {
+      alert("Listing has been removed from your favorites!");
+    }
+  </script>
+
+  <!-- if the user is logged in -->
+  <?php if (isset($_SESSION['email'])) : ?>
+    <?php 
+
+    $query = "SELECT * ";
+    $query .= "FROM favorited_properties ";
+    $query .= "WHERE property_listing_id = '$listing_id' ";
+    $query .= "AND '$email' = email ";
+    $query .= $queryParameter;
+
+    $result = mysqli_query($db, $query);
+
+    if (!$result) {
+      die("Database query failed.");
+    }
+
+    //if the listing id they are viewing matches a listing id in their favorited list
+    //show a "Remove from favorites" button
+    if($row = mysqli_fetch_row($result))
+    {
+      echo '<form method="post" id="add_to_favorites_form">
+      <div class="input-group">
+      <button onclick="alertMessageRemove()" type="submit" name="add_to_favorites" id="favorites_button">Remove from Favorites</button>
+      </div>';
+
+      $_GET['varname'] = $listing_id;
+
+      echo '</form>';
+    } else {
+      echo '<form method="post" id="add_to_favorites_form">
+      <div class="input-group">
+      <button onclick="alertMessageAdd()" type="submit" name="add_to_favorites" id="favorites_button">Add to Favorites</button>
+      </div>';
+
+      $_GET['varname'] = $listing_id;
+    }
+
+    ?>
+
+
+    <!-- display a 'Add to Favorites' button -->
+    <!-- <form method="post" id="add_to_favorites_form"> -->
+      <!-- <div class="input-group"> -->
+        <!-- <button onclick="alertMessage()" type="submit" name="add_to_favorites" id="favorites_button">Add to Favorites</button> -->
+      <!-- </div> -->
+
+      
+      <!-- // $_GET['varname'] = $listing_id; -->
+      <!-- ?> -->
+
+    <!-- </form> -->
+
+
+  <?php endif ?>
+</ul>
+</div>
+</div>
+
+
+<!-- DETAILS + INSIDE + OUTSIDE -->
+<div class="details_container center">
+  <div class="details">
+   <h2>DETAILS</h2>
+   <ul>
+    <li>Property Type: Single Family</li>
+    <li>Property Tax: $5,396 (2020)</li>
+    <li>Last Updated: Wed, October 07, 2020</li>
+    <li>Location: Urban</li>
+    <li>Property Subtype: Freehold</li>
+    <li>MLS® #: H4090358</li>
+  </ul>
+</div>
+
+<div class="inside">
+ <h2>INSIDE</h2>
+ <ul>
+  <li>Property Type: Single Family</li>
+  <li>Property Tax: $5,396 (2020)</li>
+  <li>Last Updated: Wed, October 07, 2020</li>
+  <li>Location: Urban</li>
+  <li>Property Subtype: Freehold</li>
+  <li>MLS® #: H4090358</li>
+</ul>
+</div>
+
+<div class="outside">
+ <h2>OUTSIDE</h2>
+ <ul>
+  <li>Property Type: Single Family</li>
+  <li>Property Tax: $5,396 (2020)</li>
+  <li>Last Updated: Wed, October 07, 2020</li>
+  <li>Location: Urban</li>
+  <li>Property Subtype: Freehold</li>
+  <li>MLS® #: H4090358</li>
+</ul>
+</div>
 </div>
 
 <hr class="hr">
