@@ -88,42 +88,48 @@ if(isset($_SESSION['email'])){
       
       <form method="post" action="profile.php"  id="signup">
 
-        <?php
-        echo "<h2>Welcome " . $fname . "</h2>";
+        <script>
+          function alertSaveProfile() {
+          alert("Profile information has been saved!");
+        }
+      </script>
+
+      <?php
+      echo "<h2>Welcome " . $fname . "</h2>";
        		//echo "<h2>" . $_POST['fname'] . "</h2>";
        		//echo "<h2>" . $_POST['lname'] . "</h2>";
-        ?>
+      ?>
 
-        <!-- display validation errors here -->
-        <?php include('errors.php'); ?>
+      <!-- display validation errors here -->
+      <?php include('errors.php'); ?>
 
-        <div class="input-group">
-          <label>First name</label>
-          <input type="text" name="fname" value="<?php echo $fname; ?>">
-        </div>
+      <div class="input-group">
+        <label>First name</label>
+        <input type="text" name="fname" value="<?php echo $fname; ?>">
+      </div>
 
-        <div class="input-group">
-          <label>Last name</label>
-          <input type="text" name="lname" value="<?php echo $lname; ?>">
-        </div>
+      <div class="input-group">
+        <label>Last name</label>
+        <input type="text" name="lname" value="<?php echo $lname; ?>">
+      </div>
 
-        <div class="input-group">
-          <button type="submit" name="edit_profile" class="btn">Save Edits</button>
-        </div>
+      <div class="input-group">
+        <button onclick="alertSaveProfile()" type="submit" name="edit_profile" class="btn">Save Edits</button>
+      </div>
 
-      </form>
+    </form>
 
-    </div>
-
-    <?php
-  // 4. Release returned data
-    mysqli_free_result($result);
-    ?>
-
-  </body>
-  </html>
+  </div>
 
   <?php
-  // 5. Close database connection
-  mysqli_close($db);
+  // 4. Release returned data
+  mysqli_free_result($result);
   ?>
+
+</body>
+</html>
+
+<?php
+  // 5. Close database connection
+mysqli_close($db);
+?>

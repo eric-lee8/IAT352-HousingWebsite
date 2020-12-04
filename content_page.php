@@ -185,6 +185,7 @@ if(isset($_SESSION['email'])){
     $query = "SELECT * ";
     $query .= "FROM favorited_properties ";
     $query .= "WHERE property_listing_id = '$listing_id' ";
+    $query .= "AND '$email' = email ";
     $query .= $queryParameter;
 
     $result = mysqli_query($db, $query);
